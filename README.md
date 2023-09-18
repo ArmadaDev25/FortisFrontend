@@ -16,12 +16,13 @@ Backend:
 
 ## Backend Routes
 ### Collection Routes (/collections)
-- get => '/'
+- get all collections => '/'
+- get one collection => '/:collectionID'
 - create => '/'
 - update => '/:collectionID'
 - delete => '/:collectionID'
 ### PokeCards Routes (/collections/:collectionID/cards)
-- get => '/'
+- get one Card => '/:pokeCardID'
 - create => '/'
 - update => '/:pokeCardID'
 - delete => '/:pokeCardID'
