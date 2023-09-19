@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import HomepageBody from "./components/homepage_components/HomepageBody";
+
 import './styles.css'
 
 function App() {
