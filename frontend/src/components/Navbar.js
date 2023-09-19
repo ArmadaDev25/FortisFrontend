@@ -8,17 +8,17 @@ function Navbar () {
       <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
         <Nav.Item>
           <Nav.Link eventKey="1" href="#/home">
-            NavLink 1 content
+            Link 1
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="2" title="Item">
-            NavLink 2 content
+            Link 2
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="3" disabled>
-            NavLink 3 content
+            Link 3
           </Nav.Link>
         </Nav.Item>
       </Nav>
