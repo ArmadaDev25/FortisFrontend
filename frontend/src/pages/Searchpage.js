@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+
 import ShowSearch from "../components/SearchShow"
 
 const Searchpage = () => {
@@ -6,6 +6,8 @@ const Searchpage = () => {
         <div>
         
             <h1>Card Database</h1>
+
+            
             <ShowSearch />
         </div>
     )
