@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Searchpage from "./pages/Searchpage";
 import Sitetitle from "./components/Sitetitle"
+import Collections from "./pages/Collections"
 
 import './styles.css'
 
