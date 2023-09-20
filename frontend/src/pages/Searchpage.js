@@ -5,6 +5,7 @@ const Searchpage = () => {
     return (
         <div>
             <Navbar />
+            <h1>Card Database</h1>
             <ShowSearch />
         </div>
     )
