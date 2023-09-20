@@ -24,19 +24,31 @@ const ShowSearch = () => {
         setCardEl(data) 
     }
 
+    // Setting State
     useEffect(() => {
         getSets()
     }, [])
     console.log('CardEl Value')
     console.log(cardEl)
 
-    return  (
-        <div>
-            <CardSm cards={cardEl} />
-            
-            
-        </div>  
-    )
+    // Logic that loads when data is avalible
+    const Loaded = () => {
+        return(
+            <div>
+                <h1>{cardEl[2].id}</h1>
+            </div>
+        )
+
+    }
+    const Loading = () => {
+        return(
+            <h1>Fetching Data</h1>
+        )
+
+    }
+    
+    //
+    return cardEl ? Loaded() : Loading()
     
 }
 export default ShowSearch
