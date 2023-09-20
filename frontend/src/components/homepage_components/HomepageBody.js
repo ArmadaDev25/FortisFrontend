@@ -8,7 +8,7 @@ function HomepageBody() {
   const [modalShow, setModalShow] = useState(false);
 
   return (
-    <Container id="homepage-body" className="text-center bg-secondary vh-100 d-flex flex-column align-items-center p-0">
+    <Container fluid id="homepage-body" className="text-center bg-secondary vh-100 d-flex flex-column align-items-center p-0">
       <CardStack />
       <div id="graphic-signup-container">
         <h1>Graphics/Signup Container</h1>

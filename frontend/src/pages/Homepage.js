@@ -4,9 +4,9 @@ import HomepageBody from '../components/homepage_components/HomepageBody';
 
 function Homepage () {
   return (
-    <div>
+    <>
       <HomepageBody />
-    </div>
+    </>
   )
 }
 
