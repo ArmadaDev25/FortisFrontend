@@ -9,4 +9,4 @@ const Searchpage = () => {
         </div>
     )
 }
-export default Searchpage
+export default Searchpage;
