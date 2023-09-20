@@ -3,6 +3,9 @@ import PokemonCard from "../../assets/FurretCard.png"
 import SetLogo from "../../assets/SetLogo.png"
 
 function PokemonCardModal (props) {
+
+  // useEffect
+
   return (
     <Modal
       {...props}
