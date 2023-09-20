@@ -1,6 +1,7 @@
 import { Modal, Button, Card, Row, Col, Container } from "react-bootstrap";
 import PokemonCard from "../../assets/FurretCard.png"
 import SetLogo from "../../assets/SetLogo.png"
+import CardDisplay from "../modal-components/CardDisplay";
 
 function PokemonCardModal (props) {
 
@@ -14,26 +15,7 @@ function PokemonCardModal (props) {
       centered
     >
       <Modal.Body className="d-flex flex-column flex-lg-row flex-row justify-content-evenly align-items-center px-0">
-        <div id="card-pack-details" className="d-flex flex-column mx-2 align-content-center" style={{maxWidth:"250px"}}>
-          <img src={PokemonCard}></img>
-          <div id="card-indicators" className="d-flex flex-column border rounded text-center px-1 justify-content-center w-100 m-1">
-            <div className="row">
-              <p className="m-0">Variant Indicators</p>
-            </div>
-            <div className="column">
-              <div className="d-flex flex-row justify-content-around" style={{fontSize:"12px"}}>
-                <p className="m-0">Card Count: #/#</p>
-                <p className="m-0">Category: Example</p>
-              </div>
-              <div className="d-flex flex-row justify-content-around" style={{fontSize:"12px"}}>
-                <p className="m-0">Illustrator: Example Example</p>
-              </div>
-            </div>
-          </div>
-          <div id="card-set">
-            <img className="img-fluid" src={SetLogo}></img>
-          </div>
-        </div>
+        <CardDisplay />
         <div id="card-action-details" className="d-flex flex-column d-sm-block m-2 align-self-start">
           <div id="pokemon-details" className="d-flex border-bottom flex-row flex-wrap align-items-start border rounded shadow w-100">
             <div id="poke-details-1" className="mx-2">

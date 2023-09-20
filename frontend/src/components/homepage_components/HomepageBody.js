@@ -1,7 +1,8 @@
-import { Container, Button, Row, Col } from "react-bootstrap";
+import { Container, Button, Image, Row, Col } from "react-bootstrap";
 import CardStack from "./CardStack";
 import PokemonCardModal from "../complete-modals/PokemonCardModal";
 import { React, useState } from "react";
+import Furret from "../../assets/FurretCard.png"
 
 function HomepageBody() {
   const [modalShow, setModalShow] = useState(false);
@@ -17,9 +18,13 @@ function HomepageBody() {
       </div>
       <div>
 
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
-      </Button>
+      <Image 
+        action
+        src={Furret}
+        style={{maxHeight:"250px"}}
+        onClick={() => setModalShow(true)}
+      />
+
 
       <PokemonCardModal
         show={modalShow}
