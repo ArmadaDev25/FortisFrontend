@@ -6,6 +6,8 @@ import CardSm from "./CardSm";
 // State import
 import {useState, useEffect} from 'react'
 
+import {Link} from "react-router-dom"
+
 
 const ShowSearch = () => {
     const url = `https://api.tcgdex.net/v2/en/sets`
@@ -35,10 +37,13 @@ const ShowSearch = () => {
     const Loaded = () => {
         const displayArray = cardEl.map((ele, index) =>{
             return (
-                <CardSm
-                    {...ele}
-                    key={index}
-                />
+                <Link to={`/search/set/${ele.id}`}>\
+                    <CardSm
+                        {...ele}
+                        key={index}
+                    />
+                </Link>
+                
 
             )
         })

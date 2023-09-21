@@ -3,7 +3,7 @@ const CardSm = ({name, logo}) => {
     console.log(image)
     return(
         
-        <div class="cardSmCont">
+        <div class="cardSmCont" id={name}>
             <h1>{name}</h1>
             <img src={image}></img>
         
