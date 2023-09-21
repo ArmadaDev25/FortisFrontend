@@ -1,3 +1,15 @@
 App {
   display: flex
 }
+
+#pokemon-abilities {
+  background-color: rgb(236, 108, 108);
+}
+
+#pokemon-attacks {
+  background-color: rgb(110, 199, 235);
+}
+
+#ability-effect {
+  font-size: 12px;
+}
