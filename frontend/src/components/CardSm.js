@@ -1,5 +1,5 @@
-const CardSm = ({name, symbol}) => {
-    const image = symbol +'.png'
+const CardSm = ({name, logo}) => {
+    const image = logo +'.png' // adds the .png to the end of the path for the logo
     console.log(image)
     return(
         
