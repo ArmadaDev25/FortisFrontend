@@ -33,11 +33,22 @@ const ShowSearch = () => {
 
     // Logic that loads when data is avalible
     const Loaded = () => {
+        const displayArray = cardEl.map((ele, index) =>{
+            return (
+                <CardSm
+                    {...ele}
+                    key={index}
+                />
+
+            )
+        })
         return(
             <div>
-                <h1>{cardEl[2].id}</h1>
+                {displayArray}
             </div>
         )
+        
+     
 
     }
     const Loading = () => {
