@@ -13,10 +13,8 @@ const ShowSearch = () => {
     const setsurl = `https://api.tcgdex.net/v2/en/sets/`
     const cardurl = `https://api.tcgdex.net/v2/en/sets/` + params.input
     // Refresh page Function
-    function refreshPage() {
-        window.location.reload(false);
-    }
-    const displayState = useState(null)
+
+    
 
 
    
@@ -31,7 +29,8 @@ const ShowSearch = () => {
     //console.log(url)
     
     // useState variables
-    const [cardEl, setCardEl] = useState(null)
+    const [cardEl, setCardEl] = useState(null)// contains the information pulled from the Pokemon API 
+    const [displayState, setDisplay] = useState(null) // Contains information on what is being displayed 1 means the sets are displayed, 2 means the cars in the set are displayed
     
 
     // fetchs the set data
@@ -44,6 +43,7 @@ const ShowSearch = () => {
         console.log(data)
         //console.log(data[0].name)
         setCardEl(data)
+        setDisplay(1)
          
     }
     const getCards = async () => {
@@ -54,10 +54,6 @@ const ShowSearch = () => {
         console.log(data)
         //console.log(data[0].name)
         setCardEl(data.cards)
-        
-        
-
-
     }
     
 
@@ -74,7 +70,7 @@ const ShowSearch = () => {
     // Logic that loads when data is avalible
     const Loaded = () => {
         console.log(useState)
-        
+        console.log(displayState)
 
 
         const displayArray = cardEl.map((ele, index) =>{
