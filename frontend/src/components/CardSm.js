@@ -6,7 +6,7 @@ const CardSm = ({name, logo}) => {
         
         <div class="cardSmCont" id={name}>
             <h1>{name}</h1>
-            <img src={image}></img>
+            
         
         </div>
     )

@@ -16,6 +16,7 @@ const ShowSearch = () => {
     function refreshPage() {
         window.location.reload(false);
     }
+    const displayState = useState(null)
 
 
    
@@ -31,6 +32,7 @@ const ShowSearch = () => {
     
     // useState variables
     const [cardEl, setCardEl] = useState(null)
+    
 
     // fetchs the set data
     const getSets = async () =>{
@@ -71,15 +73,19 @@ const ShowSearch = () => {
 
     // Logic that loads when data is avalible
     const Loaded = () => {
+        console.log(useState)
         
+
 
         const displayArray = cardEl.map((ele, index) =>{
             return (
                 
-                <Link to={`/search/set/${ele.id}`}>
+                <Link to={`/search/set/${ele.id}` }>
+
                     <CardSm
                         {...ele}
                         key={index}
+                        
                     />
                     
                 </Link>
@@ -89,11 +95,13 @@ const ShowSearch = () => {
 
             )
         })
+        
         return(
             <div>
                 {displayArray}
             </div>
         )
+        
         
      
 
