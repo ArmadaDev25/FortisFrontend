@@ -14,19 +14,6 @@ Backend:
 #### https://api.tcgdex.net/v2/en/series/
 - gets all series
 
-## Backend Routes
-### Collection Routes (/collections)
-- get all collections => '/'
-- get one collection => '/:collectionID'
-- create => '/'
-- update => '/:collectionID'
-- delete => '/:collectionID'
-### PokeCards Routes (/collections/:collectionID/cards)
-- get one Card => '/:pokeCardID'
-- create => '/'
-- update => '/:pokeCardID'
-- delete => '/:pokeCardID'
-
 ## Contributers
 John K
 Jackson Oberman
