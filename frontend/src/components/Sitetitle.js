@@ -1,4 +1,6 @@
 const Sitetitle = () => {
-    <h1>Reactamon</h1>
+    return (
+        <h1>Reactemon</h1>
+    )
 }
 export default Sitetitle
