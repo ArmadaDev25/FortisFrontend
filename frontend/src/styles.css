@@ -13,3 +13,22 @@ App {
 #ability-effect {
   font-size: 12px;
 }
+
+#series-logo {
+ max-height: 120px;
+ width: auto;
+}
+
+/* #pkm-card-img {
+  max-height: auto;
+  max-width: 250px;
+} */
+
+#pkm-card-details {
+  font-size: 12px;
+}
+
+#pkm-card-detail {
+  margin-bottom: 0;
+  padding:0 
+}
