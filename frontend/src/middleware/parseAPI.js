@@ -66,3 +66,11 @@ export default function parseAPI (data) {
 
     return newCard
 }
+
+const test = async () => {
+    const api = `https://api.tcgdex.net/v2/en/sets/swsh3/162`
+    const response = await fetch(api)
+    const data = response.json
+    const parsedData = parseAPI(data)
+    console.log(data)
+}
