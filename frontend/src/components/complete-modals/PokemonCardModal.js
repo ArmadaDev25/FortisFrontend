@@ -1,8 +1,6 @@
 import React from "react";
 import { Modal, closeButton, Row, Col, Container, Image, Overlay, Tooltip, OverlayTrigger, ModalHeader } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import TCGdex from '@tcgdex/sdk';
-const tcgdex = new TCGdex();
 
 function PokemonCardModal (props) {
   const [series, setSeries] = useState(null)
