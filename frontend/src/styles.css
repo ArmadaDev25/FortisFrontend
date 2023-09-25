@@ -15,20 +15,25 @@ App {
 }
 
 #series-logo {
- max-height: 120px;
- width: auto;
+ max-width: 280px;
+ height: auto;
 }
 
-/* #pkm-card-img {
-  max-height: auto;
-  max-width: 250px;
-} */
+#energy-symbol{
+  height: 20px;
+  width: 20px;
+}
 
 #pkm-card-details {
-  font-size: 12px;
+  font-size: .6rem;
 }
 
-#pkm-card-detail {
+.pkm-name {
+  font-size: 1.5rem;
+  line-height: 100%;
+}
+
+.pkm-card-detail {
   margin-bottom: 0;
   padding:0 
 }
