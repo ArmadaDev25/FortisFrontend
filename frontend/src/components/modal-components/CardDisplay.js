@@ -3,6 +3,7 @@ import { Container, Row, Col, OverlayTrigger, Image } from 'react-bootstrap';
 
 
 const CardDisplay = (props) => {
+  
 return (
     <Container id="card-pack-details" className="d-flex flex-column p-0 justify-content-center align-items-center">
         <Row className="justify-content-center p-0 mb-2">
