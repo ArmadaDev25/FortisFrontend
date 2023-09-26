@@ -6,6 +6,14 @@ App {
   background-color: rgb(236, 108, 108);
 }
 
+.abilities {
+  background-color: rgb(236, 108, 108);
+}
+
+.effect-title {
+  margin: 0px;
+}
+
 #pokemon-attacks {
   background-color: rgb(110, 199, 235);
 }
@@ -37,3 +45,4 @@ App {
   margin-bottom: 0;
   padding:0 
 }
+
