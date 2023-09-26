@@ -6,7 +6,7 @@ import CardDisplay from "../modal-components/CardDisplay";
 import RenderToolTip from "../modal-components/RenderToolTip";
 
 
-function PokemonCardModal (props) {
+function CardModal (props) {
   const [series, setSeries] = useState(null)
   const [cardData, setCardData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -96,4 +96,4 @@ function PokemonCardModal (props) {
   }
 }
 
-export default PokemonCardModal;
+export default CardModal;
