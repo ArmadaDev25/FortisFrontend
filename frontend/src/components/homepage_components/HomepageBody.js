@@ -1,6 +1,6 @@
 import { Container, Button, Image, Row, Col } from "react-bootstrap";
 import CardStack from "./CardStack";
-import PokemonCardModal from "../complete-modals/CardModal";
+import CardModal from "../complete-modals/CardModal";
 import { React, useState } from "react";
 import Furret from "../../assets/FurretCard.png"
 
@@ -26,7 +26,7 @@ function HomepageBody() {
       />
 
 
-      <PokemonCardModal
+      <CardModal
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
