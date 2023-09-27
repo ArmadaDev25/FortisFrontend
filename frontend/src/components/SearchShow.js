@@ -62,18 +62,23 @@ const ShowSearch = () => {
         console.log(cardEl)
         const displaySets = () => {
             const displaySetArray = cardEl.map((ele, index) => {
-                return(
-                    <button onClick={changeDisplayState}>
-                        <Link to={`/search/set/${ele.id}`}> 
-                            <CardSm
-                                {...ele}
-                                key={index}
-                                
-                            />
-                        </Link>
-                    </button>
-                    
-                )
+                if(ele.logo || ele.image){
+                    return(
+                        <button onClick={changeDisplayState}>
+                            <Link to={`/search/set/${ele.id}`}> 
+                                <CardSm
+                                    image={ele.logo ? `${ele.logo}.png` : `${ele.image}/low.png`}
+                                    height={ele.logo ? '100px' : '300px'}
+                                    width={ele.logo ? `200px` : `200px`}
+                                    name={ele.name}
+                                    key={index}
+                                    
+                                />
+                            </Link>
+                        </button>
+                        
+                    )
+                }
             })
             return(
                 <div>
