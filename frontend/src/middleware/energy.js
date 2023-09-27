@@ -1,17 +1,6 @@
+import energies from "../assets/energy_symbols/Energies"
+
 export default function symbolizeEnergy (type) {
-    const energies = {
-        Grass: "G",
-        Fire: "F",
-        Water: "W",
-        Lightning: "L",
-        Fighting: "Fi",
-        Psychic: "P",
-        Colorless: "C",
-        Darkness: "D",
-        Metal: "M",
-        Dragon: "Dr",
-        Fairy: "Fa"
-    }
     if(Object.keys(energies).includes(type)){
         type = energies[type]
     }

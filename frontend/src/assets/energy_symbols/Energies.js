@@ -9,3 +9,21 @@ import Metal from '../energy_symbols/Metal.png'
 import Rainbow from '../energy_symbols/Rainbow.png'
 import Water from '../energy_symbols/Water.png'
 import Dragon from '../energy_symbols/Dragon.png'
+import Psychic from '../energy_symbols/Psychic.png'
+
+const energies = {
+    Grass: Grass,
+    Fire: Fire,
+    Water: Water,
+    Lightning: Lightning,
+    Fighting: Fighting,
+    Psychic: Psychic,
+    Colorless: Colorless,
+    Darkness: Darkness,
+    Metal: Metal,
+    Dragon: Dragon,
+    Fairy: Fairy,
+    Rainbow: Rainbow
+}
+
+export default energies
