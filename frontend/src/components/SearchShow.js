@@ -16,8 +16,12 @@ const ShowSearch = () => {
     //console.log(url)   
     // useState variables
     const [cardEl, setCardEl] = useState(null)// contains the information pulled from the Pokemon API 
-    const [displayState, setDisplay] = useState(false) // Contains information on what is being displayed false means the sets are displayed, true means the cars in the set are displayed
+    const [displayState, setDisplay] = useState(null) // Contains information on what is being displayed false means the sets are displayed, true means the cars in the set are displayed
     // fetchs the set data
+    const someData = {
+        stuff: 1
+    }
+    
     const getSets = async () =>{
         const response = await fetch(setsurl)
         const data = await response.json()
@@ -36,22 +40,27 @@ const ShowSearch = () => {
         //console.log(data[0].name)
         setCardEl(data.cards)
     }
+    const changeDisplayState = () => {
+        setDisplay({displayState : true})
+        console.log('test')
+    }
     // Setting State
     useEffect(() => {
-        getSets()
-        //params.input ? getCards() : getSets()  
-    }, [])
+        params.input ? getCards() : getSets()  
+    }, [displayState])
     console.log('CardEl Value')
     console.log(cardEl)
     // Logic that loads when data is avalible
     const Loaded = () => {
         console.log(useState)
         console.log(displayState)
+        console.log(params.input)
+        //changeDisplayState()
         // Display Sets Function 
         const displaySets = () => {
             const displaySetArray = cardEl.map((ele, index) => {
                 return(
-                    <button onClick={getCards}>
+                    <button onClick={changeDisplayState()}>
                         <Link to={`/search/set/${ele.id}`}>
                             <CardSm
                                 {...ele}
