@@ -1,4 +1,4 @@
-import symbolizeEnergy from "./energy.js"
+import symbolizeEnergy from "./energy"
 
 export default function parseAPI (data) {
     const newCard = {}
@@ -47,9 +47,8 @@ export default function parseAPI (data) {
                 newCard.moves.push(move)
             })
         }
-
-        foundCard.weaknesses ? newCard.weakness = `${symbolizeEnergy(foundCard.weaknesses[0].type)} ${foundCard.weaknesses[0].value}` : null
-        foundCard.resistances ? newCard.resistances = `${symbolizeEnergy(foundCard.resistances[0].type)} ${foundCard.resistances[0].value}` : null
+        foundCard.weaknesses ? newCard.weakness = `${symbolizeEnergy(foundCard.weaknesses[0].type)} ${foundCard.weaknesses[0].value}` : newCard.weakness = ""
+        foundCard.resistances ? newCard.resistances = `${symbolizeEnergy(foundCard.resistances[0].type)} ${foundCard.resistances[0].value}` : newCard.resistances = ""
         newCard.retreat = foundCard.retreat
         newCard.hp = foundCard.hp
 
