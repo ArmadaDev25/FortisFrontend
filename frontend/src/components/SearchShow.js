@@ -6,12 +6,12 @@ import CardSm from "./CardSm";
 import {useState, useEffect} from 'react' // State import
 import {Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
-
+import Button from 'react-bootstrap/Button'
 const ShowSearch = () => {
     const params = useParams()
-    console.log(params.input)
+    //console.log(params.input)
     const setsurl = `https://api.tcgdex.net/v2/en/sets/`
-    const cardurl = `https://api.tcgdex.net/v2/en/sets/` + params.input
+    
     // Refresh page Function   
     //console.log(url)   
     // useState variables
@@ -26,17 +26,19 @@ const ShowSearch = () => {
         const response = await fetch(setsurl)
         const data = await response.json()
         // Console Log to make sure the data from the API is coming through
-        console.log(`This is the Data`)
-        console.log(data)
+        //console.log(`This is the Data`)
+        //console.log(data)
         //console.log(data[0].name)
         setCardEl(data)  
     }
     const getCards = async () => {
+        console.log(params.input)
+        const cardurl = await `https://api.tcgdex.net/v2/en/sets/${params.input}` 
         const response = await fetch(cardurl)
         const data = await response.json()
         // Console Log to make sure the data from the API is coming through
-        console.log(`This is the Data`)
-        console.log(data)
+        //console.log(`This is the Data`)
+        //console.log(data)
         //console.log(data[0].name)
         setCardEl(data.cards)
     }
@@ -48,23 +50,25 @@ const ShowSearch = () => {
     useEffect(() => {
         params.input ? getCards() : getSets()  
     }, [displayState])
-    console.log('CardEl Value')
-    console.log(cardEl)
+    //console.log('CardEl Value')
+    //console.log(cardEl)
     // Logic that loads when data is avalible
     const Loaded = () => {
-        console.log(useState)
-        console.log(displayState)
-        console.log(params.input)
+        //console.log(useState)
+        //console.log(displayState)
+        //console.log(params.input)
         //changeDisplayState()
-        // Display Sets Function 
+        // Display Sets Function
+        console.log(cardEl)
         const displaySets = () => {
             const displaySetArray = cardEl.map((ele, index) => {
                 return(
-                    <button onClick={changeDisplayState()}>
-                        <Link to={`/search/set/${ele.id}`}>
+                    <button onClick={getCards}>
+                        <Link to={`/search/set/${ele.id}`}> 
                             <CardSm
                                 {...ele}
                                 key={index}
+                                
                             />
                         </Link>
                     </button>
@@ -81,6 +85,7 @@ const ShowSearch = () => {
         const displayCards = () => {
             const displayCardArray = cardEl.map((ele, index) =>{
                 return (
+                    
                     <Link to={`/search/set/${ele.id}` }>
                         <CardSm
                             {...ele}
@@ -96,7 +101,7 @@ const ShowSearch = () => {
                 </div>
             )
         } 
-        return displayState ? displaySets() : displayCards()
+        return displayState ? displaySets() : displaySets()
     }
     const Loading = () => {
         return(

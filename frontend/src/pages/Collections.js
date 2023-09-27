@@ -36,7 +36,7 @@ const Collections = () => {
         getCollections()
     }
 
-    const deleteCollection = async () => {
+    const deleteCollection = async (id) => {
         await fetch(collectionURL + id, {
             method: "delete"
         })
