@@ -63,7 +63,7 @@ const ShowSearch = () => {
         const displaySets = () => {
             const displaySetArray = cardEl.map((ele, index) => {
                 return(
-                    <button onClick={getCards}>
+                    <button onClick={changeDisplayState}>
                         <Link to={`/search/set/${ele.id}`}> 
                             <CardSm
                                 {...ele}
