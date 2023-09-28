@@ -9,6 +9,7 @@ const CardCarousel = () => {
   const [setData, setSetData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [imagesLoadedCount, setImagesLoadedCount] = useState(0)
 
   const shortenSet = (data) => {
     while(data.cards.length > 36){
@@ -46,52 +47,37 @@ const CardCarousel = () => {
     // getCardImages()
   }, []);
 
-  // const carouselImages = setData.map((card) => {
-  //   console.log( `${card.image}`);
-  // })
-  
-  // setData.cards returns an array of cards, each object is a card
-  // card[i] is a specific card, which is an object
-  // to get image, return ${card[i].image}/high.png
+  const handleImageLoad = () => {
+    setImagesLoadedCount((prevCount) => prevCount + 1);
+  };
 
-  // const setCards = setData.cards;
-  // const getCardImages = () => {
-  //   // console.log(setData.id);
-  //   // console.log(setCards);
-  //   // console.log(typeof(setCards))
-  //   // console.log(setCards[202]);
-  //   // console.log(`${setCards[202].image}/high.png`);
-    
-  // }
   
   const loaded = () => {
-    const setCards = setData.cards;
-    console.log(setData, 'line 60 @ cardCarousel');
-    return (
-          <Container fluid 
-            id="carousel-container" 
-            className="d-flex flex-row justify-content-start overflow-scroll align-items-center bg-info py-2 px-0 m-5"
-            // setId={setData.id}
-          >
-            
+    if (setData && imagesLoadedCount <= 36) {
+      const setCards = setData.cards;
+      console.log(setData, 'line 60 @ cardCarousel');
+      return (
+        <Container
+          fluid
+          id="carousel-container"
+          className="d-flex flex-row justify-content-start overflow-scroll align-items-center bg-info py-2 px-0 m-5"
+        >
           {setCards.map((card, index) => (
-            
             <CarouselImage
-              setId={setData.id}  // Pass setId from CardCarousel to CarouselImage
+              setId={setData.id}
               localId={card.localId}
               key={index}
               image={`${card.image}/low.png`}
               alt={`${card.name} Image`}
+              onLoad={() => handleImageLoad()}
             />
           ))}
-          {/* <p>{setData.id}</p> */}
-          {/* <Image
-            className="card-image"
-            // src={`${setData.cards[1]}/high.png`}
-          /> */}
-          </Container>
-    )
-  }
+        </Container>
+      );
+    } else {
+      return null; // Return null if data is not available or images are not loaded yet
+    }
+  };
 
   const loadingText = () => {
       return (
