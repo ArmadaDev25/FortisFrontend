@@ -2,6 +2,8 @@
 import CollectionDisplayInfo from "../components/collections_comps/CollectionDisplayInfo"
 import CollectionDisplayCards from "../components/collections_comps/CollectionDisplayCards"
 import {useParams} from "react-router-dom"
+
+
 const CollectionInfo = (props) => {
     console.log(props)
     const params = useParams()
