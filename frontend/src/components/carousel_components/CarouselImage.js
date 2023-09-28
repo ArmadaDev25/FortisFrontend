@@ -2,6 +2,7 @@ import { Image, Modal, Button, ModalHeader, Col, Row, Container, OverlayTrigger 
 import { useState, useEffect } from "react";
 import CardDisplay from "../modal-components/CardDisplay";
 import CardModal from "../complete-modals/CardModal";
+import parseAPI from "../../middleware/parseAPI";
 
 const CarouselImage = (props) => {
   const [modalShow, setModalShow] = useState(false);
@@ -23,6 +24,7 @@ const CarouselImage = (props) => {
       // console.log('props @line 22:', props);
       // const card = await fetch(`${props.cardurl}`); 
       // console.log(props, 'line 21 - card props @ carouselImage.js');
+
       if (card) {
         console.log("line 28",card);
         console.log("line 29:", card.url);
@@ -31,8 +33,9 @@ const CarouselImage = (props) => {
         }
         
         const data = await card.json();
-        // console.log(data);
-        setCardData(data);
+        const parsedData = parseAPI(data)
+        //console.log(parsedData);
+        setCardData(parsedData);
         setLoading(false); // Set loading to false once data is fetched
       }
     } catch (error) {
@@ -53,25 +56,28 @@ const CarouselImage = (props) => {
 
   }
   
+  const loaded = () => {
+    return (
+      <>
+        <Image
+          // cardurl={props.cardurl}
+          className="card-image"
+          src={props.image}
+          // onClick={() => setModalShow(true)} // call api per card only upon click & setModalShow(true) & access e.event(target)
+          // onClick={() => setModalShow(true)}
+          onClick={() => handleImageClick()}
+        />
 
-  return (
-    <>
-      <Image
-        // cardurl={props.cardurl}
-        className="card-image"
-        src={props.image}
-        // onClick={() => setModalShow(true)} // call api per card only upon click & setModalShow(true) & access e.event(target)
-        // onClick={() => setModalShow(true)}
-        onClick={() => handleImageClick()}
-      />
+        <CardModal 
+          show={modalShow}
+          cardData={cardData}
+          onHide={() => setModalShow(false)}
+        />
+      </>
+    )
+  }
 
-      <CardModal 
-        show={modalShow}
-        cardData={cardData}
-        onHide={() => setModalShow(false)}
-      /> 
-    </>
-  )
+  return cardData ? loaded() : <h1>Loading...</h1>
 }
 
 export default CarouselImage;

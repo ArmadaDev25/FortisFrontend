@@ -47,8 +47,27 @@ export default function parseAPI (data) {
                 newCard.moves.push(move)
             })
         }
-        foundCard.weaknesses ? newCard.weakness = `${symbolizeEnergy(foundCard.weaknesses[0].type)} ${foundCard.weaknesses[0].value}` : newCard.weakness = ""
-        foundCard.resistances ? newCard.resistances = `${symbolizeEnergy(foundCard.resistances[0].type)} ${foundCard.resistances[0].value}` : newCard.resistances = ""
+        if(foundCard.weaknesses){
+            newCard.weaknesses = []
+            foundCard.weaknesses.forEach((weakness) => {
+                const newWeakness = {}
+                newWeakness.wType = symbolizeEnergy(weakness.type)
+                newWeakness.value = weakness.value
+
+                newCard.weaknesses.push(newWeakness)
+            })
+        }
+
+        if(foundCard.resistances){
+            newCard.resistances = []
+            foundCard.resistancees.forEach((resistance) => {
+                const newResistance = {}
+                newResistance.wType = symbolizeEnergy(resistance.type)
+                newResistance.value = resistance.value
+
+                newCard.resistances.push(newResistance)
+            })
+        }
         newCard.retreat = foundCard.retreat
         newCard.hp = foundCard.hp
 
