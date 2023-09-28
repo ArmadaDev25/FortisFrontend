@@ -66,6 +66,7 @@ function App() {
         <Route path="/" element={<Homepage />}/>
         <Route path="/search" element={<Searchpage />}/>
         <Route path="/search/set/:input" element={<Searchpage />}/>
+        <Route path="/search/set/:input/card/:card" element={<Searchpage />}/>
         <Route path="/collections" element={<Collections  />}/>
         <Route path="/collections/:id" element={<CollectionsInfo  />}/>
       </Routes>
