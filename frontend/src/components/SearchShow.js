@@ -65,29 +65,23 @@ const ShowSearch = () => {
                 if(ele.logo || ele.image){
                     if(!displayState){ //Display sets
                         return( 
-                            <button onClick={changeDisplayState}>
+                            <Button onClick={changeDisplayState} className="btn bg-light bg-gradient btn-outline-secondary m-2 shadow ">
                                 <Link to={`/search/set/${ele.id}`}> 
                                     <CardSm
                                         image={`${ele.logo}.png`}
-                                        height='150px'
-                                        width='250px'
                                         name={ele.name}
                                         key={index}
-                                    
                                     />
                                 </Link>
-                            </button>
+                            </Button>
                         )
                     } else { //Display Cards
                         return(
                             <button>
                                 <CardSm
                                     image={`${ele.image}/low.png`}
-                                    height='300px'
-                                    width='200px'
                                     name={ele.name}
                                     key={index}
-                                
                                 />
                             </button>
                         )
