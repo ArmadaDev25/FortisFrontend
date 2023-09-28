@@ -77,7 +77,12 @@ const CarouselImage = (props) => {
     )
   }
 
-  return cardData ? loaded() : <h1>Loading...</h1>
+  return cardData ? loaded() : 
+      <div class="d-flex justify-content-center align-items-center m-2">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
 }
 
 export default CarouselImage;

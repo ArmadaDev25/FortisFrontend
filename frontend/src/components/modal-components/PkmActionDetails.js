@@ -50,10 +50,6 @@ const PkmActionDetails = (props) => {
             <Container className="d-flex flex-row justify-content-evenly text-wrap m-0">
               <Col>
                 {attack.cost ? <p className="mb-0">Cost: {attack.cost.map((c) => <img src={c} height="20px" width="20px" />)}  </p>: ""}
-                {/* {attack.cost ? <p className="mb-0">Cost: {showCost()} </p>: ""} */}
-                {/* {attack.cost ? <p className="mb-0">Cost:
-                  <img id="energy-symbol" src={Colorless} /> 
-                </p>: ""} */}
               </Col>
               <Col>
                 {attack.damage ? <p className="mb-0">Dmg: {attack.damage} </p>: ""}

@@ -59,10 +59,9 @@ const CardCarousel = () => {
     console.log(setData, 'line 60 @ cardCarousel');
     return (
       <Container fluid id="cards-carousel-container" className="d-flex flex-column h-50 border bg-primary mb-2 px-0">
-          <h1>Cards Carousel</h1>
-          <Container 
+          <Container fluid 
             id="carousel-container" 
-            className="d-flex flex-row overflow-hidden py-2 px-0 m-0"
+            className="d-flex flex-row justify-content-start overflow-scroll py-2 px-0 m-0"
             // setId={setData.id}
           >
             
@@ -87,7 +86,11 @@ const CardCarousel = () => {
   }
 
   const loadingText = () => {
-    return (<p>loading @ cardcarousel.js line 84</p>)
+      return (
+        <div class="spinner-grow text-primary border rounded-5" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      )
   }
   
   return (setData ? loaded(): loadingText())
