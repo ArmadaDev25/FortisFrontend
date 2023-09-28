@@ -8,6 +8,7 @@ const CreateCol = () => {
     // Generates the form
     return (
         <div>
+            <h1>Create Collection</h1>
             <form>
                 <div>
                     <label for="enterColName">Collection Name</label>
