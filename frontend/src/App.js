@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar"
 import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Homepage from "./pages/Homepage";
 import Searchpage from "./pages/Searchpage";
 import Sitetitle from "./components/Sitetitle"
@@ -55,7 +56,7 @@ function App() {
   useEffect(() => {
       getCollections()
   }, [])
-  
+
   return (
     <div className="d-flex flex-column align-items-center container-fluid bg-success vh-100 p-0">
       <Sitetitle />

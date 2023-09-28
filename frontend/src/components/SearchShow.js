@@ -120,7 +120,7 @@ const ShowSearch = () => {
                 </div>
             )
         } 
-        return displayState ? displaySets() : displaySets()
+        return displaySets()
     }
     const Loading = () => {
         return(
