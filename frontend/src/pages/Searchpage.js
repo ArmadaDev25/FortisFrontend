@@ -1,23 +1,13 @@
-import {useState} from 'react'
+import CollectionsSB from "../components/collections_comps/CollectionComp_SB";
 import ShowSearch from "../components/SearchShow"
 
 const Searchpage = () => {
-    // Form elements
-    // Holds a blank form
-    const blankSearch = {
-        name: "",
-        type: "",
-        series:""
-    }
-
-    // State that will hold the formData
-    const [form, setForm] = useState(blankSearch)
-    // Destructuring the form 
+    
     
     return (
         <div>
         
-            
+            <CollectionsSB />
             
             <h1>Card Database</h1>
             <ShowSearch />
