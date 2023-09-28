@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 const Collections = () => {
     const [collections, setCollections] = useState(null)
 
-    const collectionURL = "http://localhost:4000/collections/"
+    const collectionURL = "https://fortis-backend-c8c49038070a.herokuapp.com/collections/"
 
     //Collection crud
     const getCollections = async () => {
@@ -48,8 +48,12 @@ const Collections = () => {
         getCollections()
     }, [])
 
+
+
     return (
-        <h1>Card Collections</h1>
+        <>
+            <h1>Card Collections</h1>
+        </>
     )
 }
 export default Collections
