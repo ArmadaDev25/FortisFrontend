@@ -28,7 +28,7 @@ function CardModal (props) {
           name={cardData.name}
           hp={cardData.hp}
           stage={cardData.stage}
-          types={cardData.types}
+          types={cardData.typing}
           evolveFrom={cardData.evolveFrom}
           abilities={cardData.abilities}
           attacks={cardData.moves}

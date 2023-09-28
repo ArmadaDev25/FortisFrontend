@@ -1,4 +1,6 @@
 import { Container, Col, Row, Image } from "react-bootstrap"
+import Colorless from '../../assets/energy_symbols/Colorless.png'
+import ShowTypes from "./Types"
 
 const PkmActionDetails = (props) => {
   return (
@@ -15,7 +17,11 @@ const PkmActionDetails = (props) => {
       <Container className="text-start border-top mt-1 pt-1" style={{fontSize: "15px"}}>
         <Row xs={12}>
           <Col className="p-0"><p className="m-0 p-0">Stage: {props.stage}</p></Col>
-          <Col className="p-0"><p className="my-0 p-0">Types: {props.types}</p></Col>
+          <Col className="p-0">
+            <p className="m-0 p-0">Type(s): 
+              {props.types ? props.types.map((type, index) => (<Image src={type} className="energy-symbol" />)) : null} 
+            </p>
+          </Col>
           <Image
             // src={}
           />
@@ -48,11 +54,11 @@ const PkmActionDetails = (props) => {
             </div>
             <Container className="d-flex flex-row justify-content-evenly text-wrap m-0">
               <Col>
-                {attack.cost ? <p className="mb-0">Cost: {attack.cost} </p>: ""}
+                {/* {attack.cost ? <p className="mb-0">Cost: {attack.cost} </p>: ""} */}
                 {/* {attack.cost ? <p className="mb-0">Cost: {showCost()} </p>: ""} */}
-                {/* {attack.cost ? <p className="mb-0">Cost:
+                {attack.cost ? <p className="mb-0">Cost:
                   <img id="energy-symbol" src={Colorless} /> 
-                </p>: ""} */}
+                </p>: ""}
               </Col>
               <Col>
                 {attack.damage ? <p className="mb-0">Dmg: {attack.damage} </p>: ""}
