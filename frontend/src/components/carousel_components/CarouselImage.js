@@ -55,6 +55,12 @@ const CarouselImage = (props) => {
     console.log( "card data line 59 @ carouselImage", cardData);
 
   }
+
+  const loads = () => {
+    return(
+      <div></div>
+    )
+  }
   
   const loaded = () => {
     return (
@@ -77,12 +83,8 @@ const CarouselImage = (props) => {
     )
   }
 
-  return cardData ? loaded() : 
-      <div class="d-flex justify-content-center align-items-center m-2">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
+  return cardData ? loaded() : loads()
+      
 }
 
 export default CarouselImage;

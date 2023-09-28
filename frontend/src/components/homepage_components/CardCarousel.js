@@ -10,6 +10,16 @@ const CardCarousel = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const shortenSet = (data) => {
+    while(data.cards.length > 36){
+      let rand = Math.floor(Math.random()*data.cards.length)
+      data.cards.splice(rand, 1)
+      console.log(data.cards)
+    }
+
+    return data
+  }
+
   const getSet = async () => {
     const tcgdexurl = "https://api.tcgdex.net/v2/en";
     
@@ -23,7 +33,7 @@ const CardCarousel = () => {
       
       const data = await set.json();
       console.log(data, "line 26 @ cardCarousel");
-      setSetData(data);
+      setSetData(shortenSet(data));
       setLoading(false); // Set loading to false once data is fetched
     } catch (error) {
       setError(error);
@@ -71,7 +81,7 @@ const CardCarousel = () => {
               setId={setData.id}  // Pass setId from CardCarousel to CarouselImage
               localId={card.localId}
               key={index}
-              image={`${card.image}/high.png`}
+              image={`${card.image}/low.png`}
               alt={`${card.name} Image`}
             />
           ))}
@@ -93,7 +103,7 @@ const CardCarousel = () => {
       )
   }
   
-  return (setData ? loaded(): loadingText())
+  return setData ? loaded(): loadingText()
 
 }
 
