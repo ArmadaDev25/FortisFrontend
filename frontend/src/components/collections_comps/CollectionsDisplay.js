@@ -23,7 +23,7 @@ const CollectionsDisplay = () => {
        
         const displayCollections = collections.map((ele, index) => {
             return(
-                <Link to={`/collections/${ele.name}`}>
+                <Link to={`/collections/${ele._id}`}>
                     <h2>{ele.name}</h2>
                 </Link>
                 
