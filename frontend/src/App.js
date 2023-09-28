@@ -58,7 +58,7 @@ function App() {
   }, [])
 
   return (
-    <div className="d-flex flex-column align-items-center container-fluid bg-success vh-100 p-0">
+    <div className="d-flex flex-column align-items-center container-fluid bg-primary h-100 p-0">
       <Sitetitle />
       <Navbar />
       <Routes>

@@ -68,10 +68,9 @@ const CardCarousel = () => {
     const setCards = setData.cards;
     console.log(setData, 'line 60 @ cardCarousel');
     return (
-      <Container fluid id="cards-carousel-container" className="d-flex flex-column h-50 border bg-primary mb-2 px-0">
           <Container fluid 
             id="carousel-container" 
-            className="d-flex flex-row justify-content-start overflow-scroll py-2 px-0 m-0"
+            className="d-flex flex-row justify-content-start overflow-scroll align-items-center bg-info py-2 px-0 m-5"
             // setId={setData.id}
           >
             
@@ -91,7 +90,6 @@ const CardCarousel = () => {
             // src={`${setData.cards[1]}/high.png`}
           /> */}
           </Container>
-      </Container>
     )
   }
 
