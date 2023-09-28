@@ -63,21 +63,35 @@ const ShowSearch = () => {
         const displaySets = () => {
             const displaySetArray = cardEl.map((ele, index) => {
                 if(ele.logo || ele.image){
-                    return(
-                        <button onClick={changeDisplayState}>
-                            <Link to={`/search/set/${ele.id}`}> 
+                    if(!displayState){ //Display sets
+                        return( 
+                            <button onClick={changeDisplayState}>
+                                <Link to={`/search/set/${ele.id}`}> 
+                                    <CardSm
+                                        image={`${ele.logo}.png`}
+                                        height='150px'
+                                        width='250px'
+                                        name={ele.name}
+                                        key={index}
+                                    
+                                    />
+                                </Link>
+                            </button>
+                        )
+                    } else { //Display Cards
+                        return(
+                            <button>
                                 <CardSm
-                                    image={ele.logo ? `${ele.logo}.png` : `${ele.image}/low.png`}
-                                    height={ele.logo ? '150px' : '300px'}
-                                    width={ele.logo ? `250px` : `200px`}
+                                    image={`${ele.image}/low.png`}
+                                    height='300px'
+                                    width='200px'
                                     name={ele.name}
                                     key={index}
-                                    
+                                
                                 />
-                            </Link>
-                        </button>
-                        
-                    )
+                            </button>
+                        )
+                    }
                 }
             })
             return(
