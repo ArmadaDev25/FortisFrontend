@@ -68,8 +68,8 @@ const ShowSearch = () => {
                             <Link to={`/search/set/${ele.id}`}> 
                                 <CardSm
                                     image={ele.logo ? `${ele.logo}.png` : `${ele.image}/low.png`}
-                                    height={ele.logo ? '100px' : '300px'}
-                                    width={ele.logo ? `200px` : `200px`}
+                                    height={ele.logo ? '150px' : '300px'}
+                                    width={ele.logo ? `250px` : `200px`}
                                     name={ele.name}
                                     key={index}
                                     

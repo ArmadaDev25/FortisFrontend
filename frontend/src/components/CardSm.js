@@ -2,6 +2,7 @@ const CardSm = ({name, image, height, width}) => {
     return(
         <div class="cardSmCont" id={name}>
             <img src={image} height={height} width={width} />
+            <h3>{name}</h3>
             
         
         </div>
