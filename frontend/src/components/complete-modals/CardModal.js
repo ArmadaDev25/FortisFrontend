@@ -17,37 +17,40 @@ function CardModal (props) {
   const [error, setError] = useState(null);
   // const [show, setShow] = useState(false);
 
+  const cardData = props.cardData
+  console.log(cardData)
+
   const cardType = () => {
 
-    if (props.cardData.category === "Pokemon") {
+    if (cardData.category === "Pokemon") {
       return (
         <PkmActionDetails 
-          name={props.cardData.name}
-          hp={props.cardData.hp}
-          stage={props.cardData.stage}
-          types={props.cardData.types}
-          evolveFrom={props.cardData.evolveFrom}
-          abilities={props.cardData.abilities}
-          attacks={props.cardData.attacks}
-          resistances={props.cardData.resistances}
-          weaknesses={props.cardData.weaknesses}
-          retreat={props.cardData.retreat}
+          name={cardData.name}
+          hp={cardData.hp}
+          stage={cardData.stage}
+          types={cardData.types}
+          evolveFrom={cardData.evolveFrom}
+          abilities={cardData.abilities}
+          attacks={cardData.moves}
+          resistances={cardData.resistances}
+          weaknesses={cardData.weakness}
+          retreat={cardData.retreat}
         />
       )
-    } else if (props.cardData.category === "Trainer") {
+    } else if (cardData.category === "Trainer") {
       return (
         <TrainerActionDetails
-          name={props.cardData.name}
-          trainerType={props.cardData.trainerType}
-          effect={props.cardData.effect}
+          name={cardData.name}
+          trainerType={cardData.trainerType}
+          effect={cardData.effect}
         />
       )
-    } else if (props.cardData.category === "Energy") {
+    } else if (cardData.category === "Energy") {
       return (
         <EnergyActionDetails 
-          name={props.cardData.name}
-          energyType={props.cardData.energyType}
-          effect={props.cardData.effect}
+          name={cardData.name}
+          energyType={cardData.energyType}
+          effect={cardData.effect}
         />
       )
     }
@@ -67,14 +70,12 @@ function CardModal (props) {
         <Modal.Body className="d-flex flex-column flex-sm-row justify-content-around px-2 shadow" show={modalShow} >
           
           <CardDisplay
-            cardSetId={props.cardData.setId}
-            image={props.cardData.image}
-            localId={props.cardData.localId}
-            variants={props.cardData.variants}
-            cardcountofficial={props.cardData.set.cardCount.official}
-            illustrator={props.cardData.illustrator}
-            category={props.cardData.category}
-            setlogo={props.cardData.set.logo}
+            image={cardData.image}
+            localId={cardData.localId}
+            variants={cardData.rarity}
+            illustrator={cardData.illustrator}
+            category={cardData.category}
+            setlogo={cardData.setLogo}
           />
 
           {/* Gets Card Category then Returns Appropriate Component  */}
