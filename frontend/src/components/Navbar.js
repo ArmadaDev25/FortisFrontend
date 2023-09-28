@@ -21,6 +21,11 @@ function Navbar () {
             Card Search
           </Nav.Link>
         </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href='/create'>
+            Create Collection
+          </Nav.Link>
+        </Nav.Item>
       </Nav>
     </div>
   );
