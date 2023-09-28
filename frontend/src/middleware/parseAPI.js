@@ -61,9 +61,9 @@ export default function parseAPI (data) {
 
         if(foundCard.resistances){
             newCard.resistances = []
-            foundCard.resistancees.forEach((resistance) => {
+            foundCard.resistances.forEach((resistance) => {
                 const newResistance = {}
-                newResistance.wType = symbolizeEnergy(resistance.type)
+                newResistance.rType = symbolizeEnergy(resistance.type)
                 newResistance.value = resistance.value
 
                 newCard.resistances.push(newResistance)
