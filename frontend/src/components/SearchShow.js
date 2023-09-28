@@ -8,9 +8,10 @@ import {Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
 import Button from 'react-bootstrap/Button'
 import SearchImage from "./search_components/SearchImage";
+import parseAPI from "../middleware/parseAPI";
 const ShowSearch = () => {
     const params = useParams()
-    //console.log(params.input)
+    console.log(params)
     const setsurl = `https://api.tcgdex.net/v2/en/sets/`
     
     // Refresh page Function   
@@ -18,6 +19,7 @@ const ShowSearch = () => {
     // useState variables
     const [cardEl, setCardEl] = useState(null)// contains the information pulled from the Pokemon API 
     const [displayState, setDisplay] = useState(null) // Contains information on what is being displayed false means the sets are displayed, true means the cars in the set are displayed
+    const [cardData, setCardData] = useState(null)
     // fetchs the set data
     const someData = {
         stuff: 1
@@ -43,20 +45,26 @@ const ShowSearch = () => {
         //console.log(data[0].name)
         setCardEl(data.cards)
     }
+
     const changeDisplayState = () => {
         setDisplay({displayState : true})
         console.log('test')
     }
     // Setting State
     useEffect(() => {
-        params.input ? getCards() : getSets()  
+        //params.input ? getCards() : getSets()  
+        if(params.input){
+            getCards()
+        }else{
+            getSets()
+        }
     }, [displayState])
     //console.log('CardEl Value')
     //console.log(cardEl)
     // Logic that loads when data is avalible
     const Loaded = () => {
         //console.log(useState)
-        //console.log(displayState)
+        console.log(displayState)
         //console.log(params.input)
         //changeDisplayState()
         // Display Sets Function
@@ -77,15 +85,30 @@ const ShowSearch = () => {
                             </Button>
                         )
                     } else { //Display Cards
-                        return(
-                            <button>
-                                <CardSm
-                                    image={`${ele.image}/low.png`}
-                                    name={ele.name}
-                                    key={index}
-                                />
-                            </button>
+                        //console.log(ele.image)
+                        //console.log(ele.localId)
+                        return (
+                            <Button onClick={changeDisplayState} className="btn bg-light bg-gradient btn-outline-secondary m-2 shadow ">
+                                <Link to={`/search/set/${params.input}/${ele.id}`}> 
+                                    <CardSm
+                                        image={`${ele.image}/low.png`}
+                                        name={ele.name}
+                                        key={index}
+                                    />
+                                </Link>
+                            </Button>
                         )
+                        // return(
+                        //     <button>
+                        //         <SearchImage 
+                        //             key={index}
+                        //             setId={params.input}
+                        //             localId={ele.localId}
+                        //             image={`${ele.image}/low.png`}
+                        //             alt={`${ele.name} Image`}
+                        //         />
+                        //     </button>
+                        // )
                     }
                 }
             })

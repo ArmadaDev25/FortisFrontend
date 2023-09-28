@@ -1,6 +1,6 @@
 import { Image, Modal, Button, ModalHeader, Col, Row, Container, OverlayTrigger } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import CardDisplay from "../modal-components/CardDisplay";
+import CardSm from "../CardSm";
 import CardModal from "../complete-modals/CardModal";
 import parseAPI from "../../middleware/parseAPI";
 
@@ -18,6 +18,8 @@ const SearchImage = (props) => {
     
     try { 
       // const card = await fetch(`${setsURL}${props.setId}/${props.localId}`);
+      // console.log(`LocalId: ${props.localId}`)
+      // console.log(`Image: ${props.image}`)
       const card = await fetch(`${setsURL}/${props.setId}/${props.localId}`);
       // let cardUrl = `${props.cardurl}`
       // console.log('cardUrl', cardUrl);
@@ -26,8 +28,8 @@ const SearchImage = (props) => {
       // console.log(props, 'line 21 - card props @ SearchImage.js');
 
       if (card) {
-        console.log("line 28",card);
-        console.log("line 29:", card.url);
+        //console.log("line 28",card);
+        //console.log("line 29:", card.url);
         if (!card.ok) {
           throw new Error(`HTTP error! Status: ${card.status}`);
         }
@@ -35,11 +37,12 @@ const SearchImage = (props) => {
         const data = await card.json();
         const parsedData = parseAPI(data)
         //console.log(parsedData);
+        //console.log(props)
         setCardData(parsedData);
         setLoading(false); // Set loading to false once data is fetched
       }
     } catch (error) {
-      console.log( 'line 37 @ Searchimage.js', error);
+      //console.log( 'line 37 @ Searchimage.js', error);
       setError(error);
       setLoading(false); // Set loading to false on error
     }
@@ -65,10 +68,12 @@ const SearchImage = (props) => {
   const loaded = () => {
     return (
       <>
-        <Image
+        <CardSm
           // cardurl={props.cardurl}
           className="card-image"
-          src={props.image}
+          image={props.image}
+          name={props.name}
+          key={props.key}
           // onClick={() => setModalShow(true)} // call api per card only upon click & setModalShow(true) & access e.event(target)
           // onClick={() => setModalShow(true)}
           onClick={() => handleImageClick()}
