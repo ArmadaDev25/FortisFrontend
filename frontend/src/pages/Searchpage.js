@@ -6,13 +6,14 @@ const Searchpage = () => {
     
     
     return (
-        <div>
-        
-            <CollectionsSB />
+        <Container fluid className='d-flex flex-column justify-content-center align-items-center w-100'>
             
+            <CollectionsSB />
             <h1>Card Database</h1>
-            <ShowSearch />
-        </div>
+            <Container fluid className='w-100'>
+                <ShowSearch />
+            </Container>
+        </Container>
     )
 }
 export default Searchpage;
