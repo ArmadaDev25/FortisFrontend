@@ -3,17 +3,7 @@ import {useState, useEffect} from "react"
 const CreateCol = () => {
     
     // Create Collections Function
-    const createCollection = async (collection) => {
-        await fetch(collectionURL, {
-            method:"post",
-            headers:{
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(collection)
-        })
-  
-        getCollections()
-    }
+   
 
     // Generates the form
     return (
@@ -32,15 +22,7 @@ const CreateCol = () => {
                     <input type="text" id="enterColImage" placeholder="Paste A Link To An Image To Represent This Collection" ></input>
                 </div>
             </form>
-
         </div>
     )
-    
-    
-    
-
-
-
-
 }
 export default CreateCol
