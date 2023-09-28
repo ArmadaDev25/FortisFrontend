@@ -1,41 +1,41 @@
-import PkmActionDetails from "./PkmActionDetails"
-import TrainerActionDetails from "./TrainerActionDetails"
-import EnergyActionDetails from "./EnergyActionDetails"
+// import PkmActionDetails from "./PkmActionDetails"
+// import TrainerActionDetails from "./TrainerActionDetails"
+// import EnergyActionDetails from "./EnergyActionDetails"
 
-const GetCardType = (cardData) => {
+// const GetCardType = (props) => {
 
-  if (cardData.category === "Pokemon") {
-    return (
-      <PkmActionDetails 
-        name={cardData.name}
-        hp={cardData.hp}
-        stage={cardData.stage}
-        types={cardData.types}
-        evolveFrom={cardData.evolveFrom}
-        abilities={cardData.abilities}
-        attacks={cardData.attacks}
-        resistances={cardData.resistances}
-        weaknesses={cardData.weaknesses}
-        retreat={cardData.retreat}
-      />
-    )
-  } else if (cardData.category === "Trainer") {
-    return (
-      <TrainerActionDetails
-        name={cardData.name}
-        trainerType={cardData.trainerType}
-        effect={cardData.effect}
-      />
-    )
-  } else if (cardData.category === "Energy") {
-    return (
-      <EnergyActionDetails 
-        name={cardData.name}
-        energyType={cardData.energyType}
-        effect={cardData.effect}
-      />
-    )
-  }
-}
+//   if (props.category === "Pokemon") {
+//     return (
+//       <PkmActionDetails 
+//         name={props.name}
+//         hp={props.hp}
+//         stage={props.stage}
+//         types={props.types}
+//         evolveFrom={props.evolveFrom}
+//         abilities={props.abilities}
+//         attacks={props.attacks}
+//         resistances={props.resistances}
+//         weaknesses={props.weaknesses}
+//         retreat={props.retreat}
+//       />
+//     )
+//   } else if (props.category === "Trainer") {
+//     return (
+//       <TrainerActionDetails
+//         name={props.name}
+//         trainerType={props.trainerType}
+//         effect={props.effect}
+//       />
+//     )
+//   } else if (props.category === "Energy") {
+//     return (
+//       <EnergyActionDetails 
+//         name={props.name}
+//         energyType={props.energyType}
+//         effect={props.effect}
+//       />
+//     )
+//   }
+// }
 
-export default GetCardType;
+// export default GetCardType;

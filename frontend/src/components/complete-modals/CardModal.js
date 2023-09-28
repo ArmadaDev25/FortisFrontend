@@ -1,52 +1,61 @@
 import React from "react";
-import { Modal, Row, Col, Container, Image, Tooltip, OverlayTrigger, ModalHeader, Card } from "react-bootstrap";
+import { Modal, Button, Col, Container, Image, Tooltip, OverlayTrigger, ModalHeader, Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import GetCardType from "../modal-components/GetCardType";
+// import GetCardType from "../modal-components/GetCardType";
 import CardDisplay from "../modal-components/CardDisplay";
 import RenderToolTip from "../modal-components/RenderToolTip";
+import PkmActionDetails from "../modal-components/PkmActionDetails"
+import TrainerActionDetails from "../modal-components/TrainerActionDetails"
+import EnergyActionDetails from "../modal-components/EnergyActionDetails"
 
 
 function CardModal (props) {
-  const [series, setSeries] = useState(null)
-  const [cardData, setCardData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // console.log('cardmodal props:', props);
+  // console.log('cardmodal props.cardData.name:', props.cardData.name);
+  const [modalShow, setModalShow] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  // const [show, setShow] = useState(false);
 
+  const cardType = () => {
 
-  
-  const getCard = async () => {
-    const tcgdexurl = "https://api.tcgdex.net/v2/en";
-    
-    try { 
-      const card = await fetch(`${tcgdexurl}/sets/swsh4/90`);
-      // const response = await fetch(`${tcgdex}/sets/${cardData.set.id}/${cardData.localId}`);
-      
-      if (!card.ok) {
-        throw new Error(`HTTP error! Status: ${card.status}`);
-      }
-      
-      const data = await card.json();
-      
-
-      // console.log(data);
-      // console.log(data.set.logo);
-      setCardData(data);
-      setLoading(false); // Set loading to false once data is fetched
-    } catch (error) {
-      setError(error);
-      setLoading(false); // Set loading to false on error
+    if (props.cardData.category === "Pokemon") {
+      return (
+        <PkmActionDetails 
+          name={props.cardData.name}
+          hp={props.cardData.hp}
+          stage={props.cardData.stage}
+          types={props.cardData.types}
+          evolveFrom={props.cardData.evolveFrom}
+          abilities={props.cardData.abilities}
+          attacks={props.cardData.attacks}
+          resistances={props.cardData.resistances}
+          weaknesses={props.cardData.weaknesses}
+          retreat={props.cardData.retreat}
+        />
+      )
+    } else if (props.cardData.category === "Trainer") {
+      return (
+        <TrainerActionDetails
+          name={props.cardData.name}
+          trainerType={props.cardData.trainerType}
+          effect={props.cardData.effect}
+        />
+      )
+    } else if (props.cardData.category === "Energy") {
+      return (
+        <EnergyActionDetails 
+          name={props.cardData.name}
+          energyType={props.cardData.energyType}
+          effect={props.cardData.effect}
+        />
+      )
     }
   }
 
-  useEffect(() => {
-    
-    getCard();
-  }, []);
 
   // Render the loaded data
   const loaded = () => {
-    console.log(cardData);
-
     return (
       <Modal
         {...props}
@@ -55,20 +64,21 @@ function CardModal (props) {
         centered
       >
         <ModalHeader closeButton></ModalHeader>
-        <Modal.Body className="d-flex flex-column flex-sm-row justify-content-around px-2 shadow">
+        <Modal.Body className="d-flex flex-column flex-sm-row justify-content-around px-2 shadow" show={modalShow} >
+          
           <CardDisplay
-            overlay={RenderToolTip(cardData)}
-            image={cardData.image}
-            localId={cardData.localId}
-            variants={cardData.variants}
-            cardcountofficial={cardData.set.cardCount.official}
-            illustrator={cardData.illustrator}
-            category={cardData.category}
-            setlogo={cardData.set.logo}
-            />
+            cardSetId={props.cardData.setId}
+            image={props.cardData.image}
+            localId={props.cardData.localId}
+            variants={props.cardData.variants}
+            cardcountofficial={props.cardData.set.cardCount.official}
+            illustrator={props.cardData.illustrator}
+            category={props.cardData.category}
+            setlogo={props.cardData.set.logo}
+          />
 
           {/* Gets Card Category then Returns Appropriate Component  */}
-          {GetCardType(cardData)}
+          {cardType()}
 
         </Modal.Body>
       </Modal>
@@ -77,11 +87,13 @@ function CardModal (props) {
 
   // Render loading state
   const renderLoading = () => {
+    console.log('render loading: line 81');
     return <h1>Loading...</h1>;
   }
 
   // Render error state
   const renderError = () => {
+    console.log("render error: line 87");
     return <p>Error: {error.message}</p>;
   }
 
@@ -89,11 +101,11 @@ function CardModal (props) {
   if (loading) {
     return renderLoading();
   } else if (error) {
-    console.log(error);
+    console.log(error, "cardmodal.js");
     return renderError();
   } else {
     return loaded();
   }
 }
 
-export default CardModal;
+export default CardModal; 
