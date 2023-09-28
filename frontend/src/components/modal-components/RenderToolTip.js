@@ -1,12 +1,12 @@
 import { Image, Tooltip, Col, Row, Container } from "react-bootstrap";
 
-const RenderToolTip = (cardData) => {
+const RenderToolTip = (props) => {
   return (
-    <Tooltip id="button-tooltip" className="d-sm-none" {...cardData}>
+    <Tooltip id="button-tooltip" className="d-sm-none" {...props}>
       <Col fluid className="d-flex flex-column p-2">
         <Container id="pkm-card-details" className="border rounded">
           <Row className="px-2">
-          <p id="pkm-card-detail" className="text-capitalize">Variant: {Object.entries(cardData.variants)
+          <p id="pkm-card-detail" className="text-capitalize">Variant: {Object.entries(props.variants)
             .filter(([variant, value]) => value === true)
             .map(([variant]) => variant)
             .join(', ')}
@@ -14,20 +14,20 @@ const RenderToolTip = (cardData) => {
           </Row>
           <Row className="px-0">
             <Col className="px-0">
-              <p id="pkm-card-detail" className="px-2">Card: {cardData.localId}/{cardData.set.cardCount.official}</p>
+              <p id="pkm-card-detail" className="px-2">Card: {props.localId}/{props.set.cardCount.official}</p>
             </Col>
             <Col className="px-0">
-              <p id="pkm-card-detail" className="px-2">Category: {cardData.category}</p>
+              <p id="pkm-card-detail" className="px-2">Category: {props.category}</p>
             </Col>
             </Row>
 
             <Row className="px-2">
-              <p id="pkm-card-detail" className="px-0">Illustrator: {cardData.illustrator}</p>
+              <p id="pkm-card-detail" className="px-0">Illustrator: {props.illustrator}</p>
             </Row>
           <Row>
             <Image
               id="series-logo" 
-              src={`${cardData.set.logo + '.png'}`} 
+              src={`${props.set.logo + '.png'}`} 
               alt="Pokemon Card" 
             />
           </Row>

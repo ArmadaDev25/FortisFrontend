@@ -10,6 +10,12 @@ App {
   background-color: rgb(236, 108, 108);
 }
 
+.card-image {
+  max-height: 11rem;
+  width: auto;
+  margin-right: .25rem;
+}
+
 .effect-title {
   margin: 0px;
 }
