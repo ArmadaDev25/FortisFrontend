@@ -67,7 +67,7 @@ function App() {
         <Route path="/search" element={<Searchpage />}/>
         <Route path="/search/set/:input" element={<Searchpage />}/>
         <Route path="/collections" element={<Collections />}/>
-        <Route path="/collections/:id" element={<CollectionsInfo />}/>
+        <Route path="/collections/:id" element={<CollectionsInfo data={collections} />}/>
       </Routes>
     </div>
   );
