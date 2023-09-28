@@ -13,8 +13,7 @@ const CollectionDisplayInfo = ({col}) => {
 
     useEffect(()=>{
         setData()
-        
-    },[])
+    })
     console.log(toDisplay)
     
     const loading = () => {
