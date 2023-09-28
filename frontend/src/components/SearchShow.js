@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react' // State import
 import {Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
 import Button from 'react-bootstrap/Button'
+import SearchImage from "./search_components/SearchImage";
 const ShowSearch = () => {
     const params = useParams()
     //console.log(params.input)
@@ -59,7 +60,7 @@ const ShowSearch = () => {
         //console.log(params.input)
         //changeDisplayState()
         // Display Sets Function
-        console.log(cardEl)
+        //console.log(cardEl)
         const displaySets = () => {
             const displaySetArray = cardEl.map((ele, index) => {
                 if(ele.logo || ele.image){
@@ -100,26 +101,6 @@ const ShowSearch = () => {
                 </div>
             )
         }
-        // Display Cards Function
-        const displayCards = () => {
-            const displayCardArray = cardEl.map((ele, index) =>{
-                return (
-                    
-                    <Link to={`/search/set/${ele.id}` }>
-                        <CardSm
-                            {...ele}
-                            key={index}
-                        />
-                        
-                    </Link>
-                )
-            })
-            return(
-                <div>
-                    {displayCardArray}
-                </div>
-            )
-        } 
         return displaySets()
     }
     const Loading = () => {
