@@ -14,7 +14,7 @@ import CardDisplay from "./modal-components/CardDisplay";
 import PkmActionDetails from "./modal-components/PkmActionDetails"
 import TrainerActionDetails from "./modal-components/TrainerActionDetails"
 import EnergyActionDetails from "./modal-components/EnergyActionDetails"
-const ShowSearch = () => {
+const ShowSearch = (props) => {
     const params = useParams()
     console.log(params)
     const setsurl = `https://api.tcgdex.net/v2/en/sets/`
@@ -205,6 +205,7 @@ const ShowSearch = () => {
 
                     <Button>
                         <CardLg
+                            props={props}
                             cardData={cardEl}
                             key={0}
                         />

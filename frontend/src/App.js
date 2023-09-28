@@ -7,6 +7,7 @@ import Sitetitle from "./components/Sitetitle"
 import Collections from "./pages/Collections"
 import CollectionsInfo from "./pages/CollectionInfo";
 import CreateCol from "./pages/CreateCol";
+import CreateCol from "./pages/CreateCol";
 
 import './styles.css'
 
