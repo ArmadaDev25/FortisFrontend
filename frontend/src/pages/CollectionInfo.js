@@ -2,8 +2,8 @@
 import CollectionDisplayInfo from "../components/collections_comps/CollectionDisplayInfo"
 import CollectionDisplayCards from "../components/collections_comps/CollectionDisplayCards"
 
-const CollectionDisplay = () => {
+const CollectionInfo = () => {
 
 
 }
-export default CollectionDisplay
+export default CollectionInfo

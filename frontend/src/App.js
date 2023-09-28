@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Searchpage from "./pages/Searchpage";
 import Sitetitle from "./components/Sitetitle"
 import Collections from "./pages/Collections"
+import CollectionsInfo from "./pages/CollectionInfo";
 
 import './styles.css'
 
@@ -66,6 +67,7 @@ function App() {
         <Route path="/search" element={<Searchpage />}/>
         <Route path="/search/set/:input" element={<Searchpage />}/>
         <Route path="/collections" element={<Collections />}/>
+        <Route path="/collections/:id" element={<CollectionsInfo />}/>
       </Routes>
     </div>
   );
