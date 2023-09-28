@@ -18,7 +18,7 @@ function CardModal (props) {
   // const [show, setShow] = useState(false);
 
   const cardData = props.cardData
-  console.log(cardData)
+  //console.log(cardData)
 
   const cardType = () => {
 
@@ -28,12 +28,12 @@ function CardModal (props) {
           name={cardData.name}
           hp={cardData.hp}
           stage={cardData.stage}
-          types={cardData.types}
+          types={cardData.typing}
           evolveFrom={cardData.evolveFrom}
           abilities={cardData.abilities}
           attacks={cardData.moves}
           resistances={cardData.resistances}
-          weaknesses={cardData.weakness}
+          weaknesses={cardData.weaknesses}
           retreat={cardData.retreat}
         />
       )

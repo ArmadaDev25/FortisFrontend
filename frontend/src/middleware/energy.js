@@ -1,11 +1,11 @@
 import energies from "../assets/energy_symbols/Energies"
 
 export default function symbolizeEnergy (type) {
+    let newType = ""
     if(Object.keys(energies).includes(type)){
-        type = energies[type]
+        newType = energies[type]
     }
-
-    return type
+    return newType
 }
 
 // const testCost = ["Colorless", "Colorless"]

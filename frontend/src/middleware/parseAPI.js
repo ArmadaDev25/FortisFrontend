@@ -19,6 +19,7 @@ export default function parseAPI (data) {
         })
 
         foundCard.stage ? newCard.stage = foundCard.stage : newCard.stage = "Basic"
+        foundCard.evolveFrom ? newCard.evolveFrom = foundCard.evolveFrom : newCard.evolveFrom = ""
 
         if(foundCard.abilities){
             newCard.abilities = []

@@ -1,6 +1,7 @@
 import { Container, Col, Row, Image } from "react-bootstrap"
 
 const PkmActionDetails = (props) => {
+  console.log(props)
   return (
     <Container id="card-action-details" className="d-flex flex-column bg-dark-subtle rounded shadow p-0 d-sm-block align-self-start text-center">
     <Container id="pokemon-details" className="d-flex flex-row flex-wrap w-100 p-2">
@@ -15,7 +16,7 @@ const PkmActionDetails = (props) => {
       <Container className="text-start border-top mt-1 pt-1" style={{fontSize: "15px"}}>
         <Row xs={12}>
           <Col className="p-0"><p className="m-0 p-0">Stage: {props.stage}</p></Col>
-          <Col className="p-0"><p className="my-0 p-0">Types: {props.types}</p></Col>
+          <Col className="p-0"><p className="my-0 p-0">Types: <img src={props.types} height="20px" width="20px" /></p></Col>
           <Image
             // src={}
           />
@@ -48,7 +49,7 @@ const PkmActionDetails = (props) => {
             </div>
             <Container className="d-flex flex-row justify-content-evenly text-wrap m-0">
               <Col>
-                {attack.cost ? <p className="mb-0">Cost: {attack.cost} </p>: ""}
+                {attack.cost ? <p className="mb-0">Cost: {attack.cost.map((c) => <img src={c} height="20px" width="20px" />)}  </p>: ""}
                 {/* {attack.cost ? <p className="mb-0">Cost: {showCost()} </p>: ""} */}
                 {/* {attack.cost ? <p className="mb-0">Cost:
                   <img id="energy-symbol" src={Colorless} /> 
@@ -68,7 +69,7 @@ const PkmActionDetails = (props) => {
       {props.weaknesses ? 
         props.weaknesses.map((weakness, index) => (
           <div id="pokemon-traits" className="d-flex flex-row justify-content-around border-top" style={{fontSize:"15px"}}>
-            {weakness? <p>Weakness: {weakness.type} {weakness.value} </p>: ""}
+            {weakness? <p>Weakness: <img src={weakness.wType} height="20px" width="20px" /> {weakness.value} </p>: ""}
           </div>
         ))
       : <p>Weakness:</p>}
@@ -77,7 +78,7 @@ const PkmActionDetails = (props) => {
       {props.resistances ? 
         props.resistances.map((resistance, index) => (
           <div id="pokemon-traits" className="d-flex flex-row justify-content-around border-top" style={{fontSize:"15px"}}>
-            {resistance? <p>Resistance: {resistance.type} {resistance.value} </p>: ""}
+            {resistance? <p>Resistance: <img src={resistance[0].rType} height="20px" width="20px" /> {resistance[0].value} </p>: ""}
           </div>
         ))
       : <p>Resistance:</p>}
