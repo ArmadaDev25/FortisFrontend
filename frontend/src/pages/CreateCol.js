@@ -2,7 +2,21 @@ import {useState, useEffect} from "react"
 
 const CreateCol = () => {
     
-    // Create Collections Function
+    // Inital Form State
+    const emptyForm = {
+        colname:"",
+        coldescription:"",
+        colimage:""
+
+    }
+
+    // State that holds the form data
+    const [form, setForm] = useState(emptyForm)
+
+    //Function that handles changes in the form
+    const handleChange = (e) => {
+        setForm({...form, [e.target.name]: e.target.value})
+    }
    
 
     // Generates the form
@@ -12,15 +26,15 @@ const CreateCol = () => {
             <form>
                 <div>
                     <label for="enterColName">Collection Name</label>
-                    <input type="text" id="enterColName" placeholder="Enter A Name For This Collection" ></input>
+                    <input name="colname" value={emptyForm.colname} type="text" id="enterColName" placeholder="Enter A Name For This Collection" ></input>
                 </div>
                 <div>
                     <label for="enterColDes">Collection Description</label>
-                    <input type="text" id="enterColDes" placeholder="Enter A Description For This Collection" ></input>
+                    <input name="coldescription" value={emptyForm.coldescription} type="text" id="enterColDes" placeholder="Enter A Description For This Collection" ></input>
                 </div>
                 <div>
                     <label for="enterColImage">Collection Description</label>
-                    <input type="text" id="enterColImage" placeholder="Paste A Link To An Image To Represent This Collection" ></input>
+                    <input name="colimage" value={emptyForm.colimage}type="text" id="enterColImage" placeholder="Paste A Link To An Image To Represent This Collection" ></input>
                 </div>
             </form>
         </div>
