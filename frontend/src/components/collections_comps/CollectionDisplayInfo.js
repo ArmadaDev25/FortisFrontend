@@ -5,7 +5,7 @@ import {useState, useEffect} from "react"
 import { Button, Container,Image } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 
-const CollectionDisplayInfo = ({col, deletePokeCard}) => {
+const CollectionDisplayInfo = ({col, deletePokeCard, deleteCollection}) => {
     const [toDisplay, setDisplay] = useState(null)
 
     const navigate = useNavigate()
@@ -23,8 +23,9 @@ const CollectionDisplayInfo = ({col, deletePokeCard}) => {
 
     const handleDeletion = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
-        //props.deleteCollection(e.target.value)
+        //console.log(e.target.value)
+        deleteCollection(e.target.value)
+        navigate('/collections')
     }
 
     const handleEdit = (e) => {

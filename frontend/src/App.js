@@ -112,7 +112,7 @@ function App() {
             <Route path="/search/set/:input" element={<Searchpage collections={collections} createPokeCard={createPokeCard}/>}/>
             <Route path="/search/set/:input/card/:card" element={<Searchpage collections={collections} createPokeCard={createPokeCard}/>}/>
             <Route path="/collections" element={<Collections collections={collections} deleteCollection={deleteCollection}/>}/>
-            <Route path="/collections/:id" element={<CollectionsInfo deletePokeCard={deletePokeCard}  />}/>
+            <Route path="/collections/:id" element={<CollectionsInfo deletePokeCard={deletePokeCard} deleteCollection={deleteCollection}/>}/>
             <Route path="/create" element={<CreateCol collection={collections} createCollection={createCollection}/>}/>
             <Route path="/collections/:id/edit" element={<EditCol collections={collections} updateCollection={updateCollection}/>}></Route>
         </Routes>
