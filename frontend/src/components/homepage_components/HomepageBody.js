@@ -13,10 +13,12 @@ function HomepageBody() {
 
 
   return (
-    <Container fluid id="homepage-body" className="text-center bg-primary vh-100 d-flex flex-column align-items-center p-0">
-      <CardStack />
+    <Container fluid id="homepage-body" className="text-center vh-100 d-flex flex-column align-items-center">
+      <Container className="bg-light border vh-100">
+        <CardStack />
+        <CardCarousel/>
+      </Container>
 
-      <CardCarousel/>
     </Container> 
     
   );

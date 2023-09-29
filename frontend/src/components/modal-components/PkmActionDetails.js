@@ -17,9 +17,6 @@ const PkmActionDetails = (props) => {
         <Row xs={12}>
           <Col className="p-0"><p className="m-0 p-0">Stage: {props.stage}</p></Col>
           <Col className="p-0"><p className="my-0 p-0">Types: <img src={props.types} height="20px" width="20px" /></p></Col>
-          <Image
-            // src={}
-          />
         </Row>
         <Row xs={12}>
           <Col className="p-0"><p className="m-0 p-0">Evolves From: {props.evolveFrom}</p></Col>

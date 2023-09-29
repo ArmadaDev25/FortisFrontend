@@ -1,5 +1,13 @@
 App {
-  display: flex
+  display: flex;
+}
+
+#homepage-body {
+  background-color: antiquewhite;
+}
+
+#nav-container {
+  background-color: rgb(44, 172, 208);
 }
 
 #pokemon-abilities {
@@ -108,7 +116,7 @@ App {
 .card-image {
   max-height: 11rem;
   width: auto;
-  margin-right: .25rem;
+  margin: .25rem;
 }
 
 .effect-title {

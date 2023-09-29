@@ -5,46 +5,58 @@ import CarouselImage from "../carousel_components/CarouselImage";
 import Ferret from "../../assets/FurretCard.png";
 import "../../../src/styles.css"
 
+
+
+const shortenSet = (data) => {
+  while(data.cards.length > 36){
+    let rand = Math.floor(Math.random()*data.cards.length)
+    data.cards.splice(rand, 1)
+  }
+  // console.log(data.cards)
+  
+  return data
+}
+
 const CardCarousel = () => {
   const [setData, setSetData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [imagesLoadedCount, setImagesLoadedCount] = useState(0)
-
-  const shortenSet = (data) => {
-    while(data.cards.length > 36){
-      let rand = Math.floor(Math.random()*data.cards.length)
-      data.cards.splice(rand, 1)
-      console.log(data.cards)
-    }
-
-    return data
-  }
-
-  const getSet = async () => {
-    const tcgdexurl = "https://api.tcgdex.net/v2/en";
+  
+  const findSet = async () => {
+    const allSetsArray = await fetch("https://api.tcgdex.net/v2/en/sets");
+    const allSetsData = await allSetsArray.json();
+    let foundSetArray = [];
+    let randomSetId = '';
     
-    try { 
-      const set = await fetch(`${tcgdexurl}/sets/swsh4`);
-      // const response = await fetch(`${tcgdex}/sets/${cardData.set.id}/${cardData.localId}`);
-      
-      if (!set.ok) {
-        throw new Error(`HTTP error! Status: ${set.status}`);
+    for (let i = 0; i < allSetsData.length; i++) {
+      const set = allSetsData[i];
+      if(set.cardCount.total > 36 && !set.name.includes('Promos')) {
+        foundSetArray.push(set)
       }
-      
-      const data = await set.json();
-      console.log(data, "line 26 @ cardCarousel");
-      setSetData(shortenSet(data));
-      setLoading(false); // Set loading to false once data is fetched
-    } catch (error) {
-      setError(error);
-      setLoading(false); // Set loading to false on error
     }
+    console.log(foundSetArray);
+  
+    let randomSetIndex = Math.floor(Math.random()*foundSetArray.length)
+    randomSetId = foundSetArray[randomSetIndex].id
+  
+    try {
+      const randomSetData = await fetch(`https://api.tcgdex.net/v2/en/sets/${randomSetId}`)
+      if (!randomSetData.ok) {
+        throw new Error(`HTTP error! Status: ${randomSetData.status}`);
+      }
+      const renderedRandomData = await randomSetData.json()
+      console.log(renderedRandomData);
+      setSetData(shortenSet(renderedRandomData));
+    }catch (error) {
+      setError(error);
+    }
+    
   }
+
  
   useEffect(() => {
-    getSet()
-    // getCardImages()
+    findSet()
   }, []);
 
   const handleImageLoad = () => {
@@ -55,23 +67,31 @@ const CardCarousel = () => {
   const loaded = () => {
     if (setData && imagesLoadedCount <= 36) {
       const setCards = setData.cards;
-      console.log(setData, 'line 60 @ cardCarousel');
       return (
-        <Container
-          fluid
-          id="carousel-container"
-          className="d-flex flex-row justify-content-start overflow-scroll align-items-center bg-info py-2 px-0 m-5"
-        >
-          {setCards.map((card, index) => (
-            <CarouselImage
-              setId={setData.id}
-              localId={card.localId}
-              key={index}
-              image={`${card.image}/low.png`}
-              alt={`${card.name} Image`}
-              onLoad={() => handleImageLoad()}
-            />
-          ))}
+        <Container  className="d-flex flex-column p-0 mb-2 py-2 bg-light border rounded">
+              <h5 className="mb-0 text-muted">Featured Set: {setData.name} </h5>
+          <Container  className="d-flex flex-column justify-content-center align-items-center p-0 mb-2">
+              <Image
+                src={`${setData.logo}.png`}
+                style={{width:"250px", maxHeight:"200px"}}
+              />
+          </Container>
+          <Container
+            fluid
+            id="carousel-container"
+            className="d-flex flex-row justify-content-start overflow-scroll bg-dark border-top align-items-center py-2 px-0 m-0"
+            >
+            {setCards.map((card, index) => (
+              <CarouselImage
+                setId={setData.id}
+                localId={card.localId}
+                key={index}
+                image={`${card.image}/low.png`}
+                alt={`${card.name} Image`}
+                onLoad={() => handleImageLoad()}
+              />
+              ))}
+          </Container>
         </Container>
       );
     } else {
@@ -81,8 +101,8 @@ const CardCarousel = () => {
 
   const loadingText = () => {
       return (
-        <div class="spinner-grow text-primary border rounded-5" role="status">
-          <span class="visually-hidden">Loading...</span>
+        <div className="spinner-grow text-primary border rounded-5" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       )
   }
