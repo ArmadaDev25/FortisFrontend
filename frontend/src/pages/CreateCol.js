@@ -1,7 +1,10 @@
 import {useState, useEffect} from "react"
 import { Button, Container, Card, Form } from "react-bootstrap"
+import energies from "../assets/energy_symbols/Energies"
+import { useNavigate } from "react-router-dom"
 
 const CreateCol = (props) => {
+    const navigate = useNavigate()
     
     // Inital Form State
     const emptyForm = {
@@ -29,7 +32,23 @@ const CreateCol = (props) => {
         e.preventDefault()
         props.createCollection(form)
         setForm(emptyForm)
+        navigate('/collections')
+    }
 
+    const energyArray = () => {
+        const eArr = []
+        for(let energy in energies){
+            const enObj = {}
+            enObj.name = energy
+            enObj.img = energies[energy]
+            eArr.push(enObj)
+        }
+
+        return eArr.map((energy, idx) => {
+            return (
+                <option value={energy.img}>{energy.name}</option>
+            )
+        })
     }
  
 
@@ -47,8 +66,11 @@ const CreateCol = (props) => {
                     <Form.Control name="description" value={form.description} type="textarea" rows={3} id="enterColDes" placeholder="Enter A Description For This Collection" onChange={(e) => {handleChange(e)}} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label for="enterColImage">Collection Description</Form.Label>
-                    <Form.Control name="img" value={form.img}type="text" id="enterColImage" placeholder="Paste A Link To An Image To Represent This Collection" onChange={(e) => {handleChange(e)}} />
+                    <Form.Label for="enterColImage">Collection Icon</Form.Label>
+                    <Form.Select name="img" id="enterColImage" placeholder="Select Icon" onChange={(e) => handleChange(e)}>
+                        <option>Select Collection</option>
+                        {energyArray()}
+                    </Form.Select>
                 </Form.Group>
                 <Button type="submit">
                     Create Collection
