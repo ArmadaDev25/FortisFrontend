@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button, Col, Container, Image, Tooltip, OverlayTrigger, ModalHeader, Card, Row, Form, FormControl} from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 // import GetCardType from "../modal-components/GetCardType";
 import RenderToolTip from "./modal-components/RenderToolTip";
 import CardDisplay from "./modal-components/CardDisplay";
@@ -15,10 +16,11 @@ function CardLg (props) {
     const [modalShow, setModalShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
     // const [show, setShow] = useState(false);
     
     const cardData = props.cardData
-    console.log(cardData)
+    const collections = props.props.collections
 
     const newForm = {
         cardData: props.cardData,
@@ -64,13 +66,30 @@ function CardLg (props) {
     }
 
     const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value})
+        setForm({...form, cardData:cardData, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = (e) => {
         setForm({...form, cardData:cardData})
         e.preventDefault()
         console.log(form)
+        //navigate('/collections')
+    }
+
+    const collectionArray = collections.map((ele,idx) => {
+        return(
+            <option value={ele._id}>{ele.name}</option>
+        )
+    })
+
+    const selectButton = () => {
+        if(form.collection !== ""){
+            return(
+                <Button type="submit">
+                    Add to Collection
+                </Button>
+            )
+        }
     }
 
 
@@ -102,8 +121,8 @@ function CardLg (props) {
                                     Which Collection?
                                 </Form.Label>
                                 <Form.Select name="collection" onChange={(e) => handleChange(e)}>
-                                    <option>Option</option>
-                                    <option>Option2</option>
+                                    <option>Select Collection</option>
+                                    {collectionArray}
                                 </Form.Select>
                             </Form.Group>
                             <Button type="submit">
