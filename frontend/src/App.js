@@ -16,8 +16,8 @@ function App() {
     const [collections, setCollections] = useState(null)
     const [pokeCards, setPokeCards] = useState(null)
 
-    const collectionURL = "https://fortis-backend-c8c49038070a.herokuapp.com/collections/"
-    const pokeCardURL = `${collectionURL}:collectionID/cards/`
+    //const collectionURL = "https://fortis-backend-c8c49038070a.herokuapp.com/collections/"
+    const collectionURL = "http://localhost:4000/collections/"
 
     //Collection crud
     const getCollections = async () => {
@@ -59,14 +59,14 @@ function App() {
     }
 
     //PokeCard crud
-    const getPokeCards = async () => {
-        const response = await fetch(pokeCardURL)
+    const getPokeCards = async (collectionID) => {
+        const response = await fetch(`${collectionURL}${collectionID}/cards/`)
         const data = await response.json()
         setPokeCards(data.data)
     }
 
-    const createPokeCard = async (pokeCard) => {
-        await fetch(pokeCardURL, {
+    const createPokeCard = async (collectionID, pokeCard) => {
+        await fetch(`${collectionURL}${collectionID}/cards/`, {
             method:"post",
             headers:{
                 "Content-Type": "application/json"
@@ -74,11 +74,11 @@ function App() {
             body: JSON.stringify(pokeCard)
         })
 
-        getPokeCards()
+        getCollections()
     }
 
-    const updatePokeCard = async (pokeCard, id) => {
-        await fetch(pokeCardURL + id, {
+    const updatePokeCard = async (collectionID, pokeCard, id) => {
+        await fetch(`${collectionURL}${collectionID}/cards/` + id, {
             method:"put",
             headers:{
                 "Content-Type": "application/json"
@@ -86,15 +86,15 @@ function App() {
             body: JSON.stringify(pokeCard)
         })
 
-        getPokeCards()
+        getCollections()
     }
 
-    const deletePokeCard = async (id) => {
-        await fetch(pokeCardURL + id, {
+    const deletePokeCard = async (collectionID, id) => {
+        await fetch(`${collectionURL}${collectionID}/cards/` + id, {
             method: "delete"
         })
 
-        getPokeCards()
+        getCollections()
     }
 
     useEffect(() => {
@@ -107,9 +107,9 @@ function App() {
         <Navbar />
         <Routes>
             <Route path="/" element={<Homepage/>}/>
-            <Route path="/search" element={<Searchpage collections={collections}/>}/>
-            <Route path="/search/set/:input" element={<Searchpage collections={collections}/>}/>
-            <Route path="/search/set/:input/card/:card" element={<Searchpage collections={collections}/>}/>
+            <Route path="/search" element={<Searchpage collections={collections} createPokeCard={createPokeCard}/>}/>
+            <Route path="/search/set/:input" element={<Searchpage collections={collections} createPokeCard={createPokeCard}/>}/>
+            <Route path="/search/set/:input/card/:card" element={<Searchpage collections={collections} createPokeCard={createPokeCard}/>}/>
             <Route path="/collections" element={<Collections  />}/>
             <Route path="/collections/:id" element={<CollectionsInfo  />}/>
             <Route path="/create" element={<CreateCol collection={collections} createCollection={createCollection}/>}/>

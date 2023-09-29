@@ -21,10 +21,11 @@ function CardLg (props) {
     
     const cardData = props.cardData
     const collections = props.collections
+    
+    const [collectionId, setCollectionId] = useState(null)
 
     const newForm = {
-        cardData: props.cardData,
-        collection: ""
+        cardData: props.cardData
     }
 
     const [form, setForm] = useState(newForm)
@@ -66,14 +67,13 @@ function CardLg (props) {
     }
 
     const handleChange = (e) => {
-        setForm({...form, cardData:cardData, [e.target.name]: e.target.value})
+        setCollectionId(e.target.value)
     }
 
     const handleSubmit = (e) => {
-        setForm({...form, cardData:cardData})
+        setForm({cardData:cardData})
         e.preventDefault()
-        console.log(form)
-        //navigate('/collections')
+        props.createPokeCard(collectionId, form)
     }
 
     const collectionArray = collections.map((ele,idx) => {

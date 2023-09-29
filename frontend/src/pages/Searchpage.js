@@ -8,7 +8,7 @@ const Searchpage = (props) => {
     return (
         <Container id='showsearchcontainer' className='d-flex flex-column justify-content-center align-items-center p-0'>
             <h1>Card Database</h1>
-            <ShowSearch collections={props.collections}/>
+            <ShowSearch collections={props.collections} createPokeCard={props.createPokeCard}/>
         </Container>
     )
 }
