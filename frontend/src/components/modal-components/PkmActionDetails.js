@@ -1,7 +1,7 @@
 import { Container, Col, Row, Image } from "react-bootstrap"
 
 const PkmActionDetails = (props) => {
-  console.log(props)
+  //console.log(props)
   return (
     <Container id="card-action-details" className="d-flex flex-column bg-dark-subtle rounded shadow p-0 d-sm-block align-self-start text-center">
     <Container id="pokemon-details" className="d-flex flex-row flex-wrap w-100 p-2">
