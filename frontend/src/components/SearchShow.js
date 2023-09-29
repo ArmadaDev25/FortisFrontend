@@ -76,48 +76,6 @@ const ShowSearch = (props) => {
         setDisplay((c) => c+1)
         console.log(displayState)
     }
-    
-    const changeDisplayStateCard = () => {
-        console.log("Inside Change!")
-        setDisplay(disStates.card)
-        console.log(displayState)
-    }
-
-    const cardType = (cardData) => {
-
-        if (cardData.category === "Pokemon") {
-          return (
-            <PkmActionDetails 
-              name={cardData.name}
-              hp={cardData.hp}
-              stage={cardData.stage}
-              types={cardData.typing}
-              evolveFrom={cardData.evolveFrom}
-              abilities={cardData.abilities}
-              attacks={cardData.moves}
-              resistances={cardData.resistances}
-              weaknesses={cardData.weaknesses}
-              retreat={cardData.retreat}
-            />
-          )
-        } else if (cardData.category === "Trainer") {
-          return (
-            <TrainerActionDetails
-              name={cardData.name}
-              trainerType={cardData.trainerType}
-              effect={cardData.effect}
-            />
-          )
-        } else if (cardData.category === "Energy") {
-          return (
-            <EnergyActionDetails 
-              name={cardData.name}
-              energyType={cardData.energyType}
-              effect={cardData.effect}
-            />
-          )
-        }
-    }
 
     // Setting State
     useEffect(() => {
@@ -145,78 +103,34 @@ const ShowSearch = (props) => {
         //console.log(cardEl)
         
         const displaySets = () => {
-
-            const displaySetArray = cardEl.map((ele, index) => {
-                if(ele.logo || ele.image){
-                    if(!displayState){ //Display sets
-                        return( 
-                            <Card
-                                key={index}
-                                className="d-flex flex-column justify-content-center col-4 col-md-2 m-2 set-card "
-                                onClick={() => changeDisplayStateCards()}
-                            >
-                                <Link to={`/search/set/${ele.id}`}>
-                                <div className="img-wrapper flex-wrap m-0 p-2">
-                                    <img
-                                        variant="top"
-                                        src={`${ele.logo}.png`}
-                                        className="zoom set-logo"
-                                        style={{ width: "auto", maxWidth: "100%", maxHeight: "100%" }}
-                                    />
-                              
-                                </div>
-                                </Link>
-                                <div className="text-center h-25 p-1 mb-2">
-                                    {ele.name}
-                                </div>
-                            </Card>
-                        )
-                    } else { //Display Cards
-                        return(
-                            <button>
-                                <CardSm
-                                    image={`${ele.image}/low.png`}
-                                    name={ele.name}
-                                    key={index}
-                                />
-                            </button>
-                        )
-                    }
-                }
-            })
-            return(
-                <Container fluid id="set-array-container" className='d-flex flex-row flex-wrap justify-content-center w-100'>
-                    {displaySetArray}
-                </Container>
-            )
             if (displayState <= 1){
                 const displaySetArray = cardEl.map((ele, index) => {
                     if(ele.logo || ele.image){
-                        if(displayState === 0){ //Display sets
-                            console.log(displayState)
+                        if(!displayState){ //Display sets
                             return( 
-                                <Button onClick={changeDisplayStateCards} className="btn bg-light bg-gradient btn-outline-secondary m-2 shadow ">
-                                    <Link to={`/search/set/${ele.id}`}> 
-                                        <CardSm
-                                            image={`${ele.logo}.png`}
-                                            name={ele.name}
-                                            key={index}
+                                <Card
+                                    key={index}
+                                    className="d-flex flex-column justify-content-center col-4 col-md-2 m-2 set-card "
+                                    onClick={() => changeDisplayStateCards()}
+                                >
+                                    <Link to={`/search/set/${ele.id}`}>
+                                    <div className="img-wrapper flex-wrap m-0 p-2">
+                                        <img
+                                            variant="top"
+                                            src={`${ele.logo}.png`}
+                                            className="zoom set-logo"
+                                            style={{ width: "auto", maxWidth: "100%", maxHeight: "100%" }}
                                         />
+                                
+                                    </div>
                                     </Link>
-                                </Button>
+                                    <div className="text-center h-25 p-1 mb-2">
+                                        {ele.name}
+                                    </div>
+                                </Card>
                             )
-                        } else if(displayState === 1) { //Display Cards
-                            console.log(displayState)
+                        } else { //Display Cards
                             return(
-                                // <Button onClick={() => changeDisplayStateCards()} className="btn bg-light bg-gradient btn-outline-secondary m-2 shadow ">
-                                //     <Link to={`/search/set/${params.input}/${ele.localId}`}> 
-                                //         <CardSm
-                                //             image={`${ele.image}/low.png`}
-                                //             name={""}
-                                //             key={index}
-                                //         />
-                                //     </Link>
-                                // </Button>
                                 <Button onClick={changeDisplayStateCards} className="btn bg-light bg-gradient btn-outline-secondary m-2 shadow ">
                                     <Link to={`/search/set/${params.input}/card/${ele.localId}`}> 
                                         <CardSm
@@ -230,11 +144,10 @@ const ShowSearch = (props) => {
                         }
                     }
                 })
-
                 return(
-                    <div>
+                    <Container fluid id="set-array-container" className='d-flex flex-row flex-wrap justify-content-center w-100'>
                         {displaySetArray}
-                    </div>
+                    </Container>
                 )
             } else {
                 console.log(displayState)
@@ -252,7 +165,7 @@ const ShowSearch = (props) => {
 
                     <Button>
                         <CardLg
-                            props={props}
+                            collections = {props.collections}
                             cardData={cardEl}
                             key={0}
                         />
