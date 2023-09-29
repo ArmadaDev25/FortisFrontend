@@ -20,7 +20,7 @@ function CardLg (props) {
     // const [show, setShow] = useState(false);
     
     const cardData = props.cardData
-    const collections = props.props.collections
+    const collections = props.collections
 
     const newForm = {
         cardData: props.cardData,
