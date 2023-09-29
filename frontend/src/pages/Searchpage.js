@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap'
 import {useState} from 'react'
 import ShowSearch from "../components/SearchShow"
 import CollectionsSB from '../components/collections_comps/CollectionComp_SB'
-const Searchpage = () => {
+const Searchpage = (props) => {
     
     
     return (

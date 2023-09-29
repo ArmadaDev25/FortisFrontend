@@ -1,6 +1,7 @@
 import React from "react";
-import { Modal, Button, Col, Container, Image, Tooltip, OverlayTrigger, ModalHeader, Card, Row} from "react-bootstrap";
+import { Modal, Button, Col, Container, Image, Tooltip, OverlayTrigger, ModalHeader, Card, Row, Form, FormControl} from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 // import GetCardType from "../modal-components/GetCardType";
 import RenderToolTip from "./modal-components/RenderToolTip";
 import CardDisplay from "./modal-components/CardDisplay";
@@ -15,12 +16,18 @@ function CardLg (props) {
     const [modalShow, setModalShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
     // const [show, setShow] = useState(false);
-
-    //console.log(props.url)
-
+    
     const cardData = props.cardData
-    console.log(cardData)
+    const collections = props.props.collections
+
+    const newForm = {
+        cardData: props.cardData,
+        collection: ""
+    }
+
+    const [form, setForm] = useState(newForm)
 
     const cardType = () => {
 
@@ -58,6 +65,33 @@ function CardLg (props) {
         }
     }
 
+    const handleChange = (e) => {
+        setForm({...form, cardData:cardData, [e.target.name]: e.target.value})
+    }
+
+    const handleSubmit = (e) => {
+        setForm({...form, cardData:cardData})
+        e.preventDefault()
+        console.log(form)
+        //navigate('/collections')
+    }
+
+    const collectionArray = collections.map((ele,idx) => {
+        return(
+            <option value={ele._id}>{ele.name}</option>
+        )
+    })
+
+    const selectButton = () => {
+        if(form.collection !== ""){
+            return(
+                <Button type="submit">
+                    Add to Collection
+                </Button>
+            )
+        }
+    }
+
 
     // Render the loaded data
     const loaded = () => {
@@ -78,52 +112,24 @@ function CardLg (props) {
                         category={cardData.category}
                         setlogo={cardData.setLogo}
                     />
-                    {/* <Container id="card-pack-details" className="d-flex flex-column p-0 justify-content-center align-items-center">
-                        <Row className="justify-content-center p-0 mb-2">
-                        <OverlayTrigger
-                            placement="bottom"
-                            delay={{ show: 100, hide: 100 }}
-                            overlay={props.overlay}
-                        >
-                        <img
-                            className="p-0"
-                            id="pkm-card-img"
-                            src={cardData.image}
-                            alt="Pokemon Card"
-                            style={{ maxHeight: "360px", width: "auto", height: "auto", display: "block", margin: "0 auto" }}
-                        />
-                        </OverlayTrigger>
-                        </Row>
-                        <Col id="pkm-card-details" className="d-none d-sm-flex flex-column justify-content-center text-center border rounded py-2 w-75">
-                        <Row fluid className="px-0">
-                            <p id="pkm-variant" className="pkm-card-detail text-capitalize">Variant: {Object.entries(cardData.rarity)
-                            .filter(([variant, value]) => value === true)
-                            .map(([variant]) => variant)
-                            .join(', ')}
-                            </p>
-                        </Row>
-
-                        <Row className="d-inline-flex flex-row justify-content-center px-0">
-                            <p id="card-count" className="pkm-card-detail">Card: {cardData.localId}</p>
-                            <p id="card-category" className="pkm-card-detail">Category: {cardData.category}</p>
-                        </Row>
-
-                        <Row className="">
-                            <p id="illustrator" className="pkm-card-detail px-0">Illustrator: {cardData.illustrator}</p>
-                        </Row>
-                        <Row className="justify-content-center">
-                            <Image
-                            id="series-logo" 
-                            src={cardData.setlogo} 
-                            alt="Pokemon Card" />
-                        </Row>
-                        </Col>
-                    </Container> */}
-                    {/* <div>{cardData.name}</div>
-                    <img src={cardData.image} /> */}
-
                 {/* Gets Card Category then Returns Appropriate Component  */}
-                    {cardType()}
+                    <Container>
+                        {cardType()}
+                        <Form onSubmit={(e) => handleSubmit(e)}>
+                            <Form.Group>
+                                <Form.Label>
+                                    Which Collection?
+                                </Form.Label>
+                                <Form.Select name="collection" onChange={(e) => handleChange(e)}>
+                                    <option>Select Collection</option>
+                                    {collectionArray}
+                                </Form.Select>
+                            </Form.Group>
+                            <Button type="submit">
+                                Add to Collection
+                            </Button>
+                        </Form>
+                    </Container>
 
                 </Card.Body>
             </Card>

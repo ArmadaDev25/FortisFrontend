@@ -74,7 +74,7 @@ const PkmActionDetails = (props) => {
       {props.resistances ? 
         props.resistances.map((resistance, index) => (
           <div id="pokemon-traits" className="d-flex flex-row justify-content-around border-top" style={{fontSize:"15px"}}>
-            {resistance? <p>Resistance: <img src={resistance[0].rType} height="20px" width="20px" /> {resistance[0].value} </p>: ""}
+            {resistance? <p>Resistance: <img src={resistance.rType} height="20px" width="20px" /> {resistance.value} </p>: ""}
           </div>
         ))
       : <p>Resistance:</p>}
