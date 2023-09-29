@@ -22,6 +22,12 @@ const CreateCol = () => {
     useEffect(()=>{
         console.log(form)
     })
+
+    // handle submitt for this form
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
+    }
  
 
     // Generates the form

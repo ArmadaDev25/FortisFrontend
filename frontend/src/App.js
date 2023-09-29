@@ -112,7 +112,7 @@ function App() {
             <Route path="/search/set/:input/card/:card" element={<Searchpage collections={collections}/>}/>
             <Route path="/collections" element={<Collections  />}/>
             <Route path="/collections/:id" element={<CollectionsInfo  />}/>
-            <Route path="/create" element={<CreateCol/>}/>
+            <Route path="/create" element={<CreateCol collection={collection} createCollection={createCollection}/>}/>
         </Routes>
         </Container>
     );
