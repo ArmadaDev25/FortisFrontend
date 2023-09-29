@@ -6,11 +6,10 @@ const Searchpage = (props) => {
     
     
     return (
-        <Container fluid className='d-flex flex-column justify-content-center align-items-center w-100'>
+        <Container id='showsearchcontainer' className='d-flex flex-column justify-content-center align-items-center p-0'>
+            <CollectionsSB />
             <h1>Card Database</h1>
-            <Container fluid className='w-100'>
-                <ShowSearch collections={props.collections}/>
-            </Container>
+            <ShowSearch />
         </Container>
     )
 }

@@ -2,11 +2,11 @@
 // Will also display results of searching for a specific card/cards
 
 // Imports
+import {  Button, Card, Container, Row, Col, OverlayTrigger, Image } from "react-bootstrap";
 import CardSm from "./CardSm";
 import {useState, useEffect} from 'react' // State import
 import {Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
-import { Button, Card, Container, Row, Col, OverlayTrigger, Image } from "react-bootstrap";
 import parseAPI from "../middleware/parseAPI";
 import CardModal from "./complete-modals/CardModal";
 import CardLg from "./CardLg";
@@ -14,6 +14,7 @@ import CardDisplay from "./modal-components/CardDisplay";
 import PkmActionDetails from "./modal-components/PkmActionDetails"
 import TrainerActionDetails from "./modal-components/TrainerActionDetails"
 import EnergyActionDetails from "./modal-components/EnergyActionDetails"
+
 const ShowSearch = (props) => {
     const params = useParams()
     console.log(params)
@@ -31,6 +32,7 @@ const ShowSearch = (props) => {
     // useState variables
     const [cardEl, setCardEl] = useState(null)// contains the information pulled from the Pokemon API 
     const [displayState, setDisplay] = useState(0) // Contains information on what is being displayed false means the sets are displayed, true means the cars in the set are displayed
+
     // fetchs the set data
     const someData = {
         stuff: 1
@@ -133,7 +135,7 @@ const ShowSearch = (props) => {
     }, [displayState])
     //console.log('CardEl Value')
     //console.log(cardEl)
-    // Logic that loads when data is avalible
+    // Logic that loads when data is available
     const Loaded = () => {
         //console.log(useState)
         //console.log(displayState)
@@ -141,7 +143,52 @@ const ShowSearch = (props) => {
         //changeDisplayState()
         // Display Sets Function
         //console.log(cardEl)
+        
         const displaySets = () => {
+
+            const displaySetArray = cardEl.map((ele, index) => {
+                if(ele.logo || ele.image){
+                    if(!displayState){ //Display sets
+                        return( 
+                            <Card
+                                key={index}
+                                className="d-flex flex-column justify-content-center col-4 col-md-2 m-2 set-card "
+                                onClick={() => changeDisplayStateCards()}
+                            >
+                                <Link to={`/search/set/${ele.id}`}>
+                                <div className="img-wrapper flex-wrap m-0 p-2">
+                                    <img
+                                        variant="top"
+                                        src={`${ele.logo}.png`}
+                                        className="zoom set-logo"
+                                        style={{ width: "auto", maxWidth: "100%", maxHeight: "100%" }}
+                                    />
+                              
+                                </div>
+                                </Link>
+                                <div className="text-center h-25 p-1 mb-2">
+                                    {ele.name}
+                                </div>
+                            </Card>
+                        )
+                    } else { //Display Cards
+                        return(
+                            <button>
+                                <CardSm
+                                    image={`${ele.image}/low.png`}
+                                    name={ele.name}
+                                    key={index}
+                                />
+                            </button>
+                        )
+                    }
+                }
+            })
+            return(
+                <Container fluid id="set-array-container" className='d-flex flex-row flex-wrap justify-content-center w-100'>
+                    {displaySetArray}
+                </Container>
+            )
             if (displayState <= 1){
                 const displaySetArray = cardEl.map((ele, index) => {
                     if(ele.logo || ele.image){
@@ -230,9 +277,9 @@ const ShowSearch = (props) => {
                 )
             })
             return(
-                <div>
+                <Container id="card-array-container"  className='d-flex flex-row flex-wrap justify-content-center w-100'>
                     {displayCardArray}
-                </div>
+                </Container>
             )
         } 
         return displaySets()

@@ -6,19 +6,103 @@ App {
   background-color: rgb(236, 108, 108);
 }
 
+
 .abilities {
   background-color: rgb(236, 108, 108);
 }
 
-.cardSmCont {
-  width: 12rem;
-  height: 12rem;
+
+/* SEARCH SHOW LOGO HOVER EFFECT ONLY */
+/* .set-card {
+  width: 140px;
+  height: 140px;
+}
+.set-logo {
+  aspect-ratio: 1/1;
 }
 
-.set-display {
-  max-width: 11rem;
-  max-height: 11rem;
-  height: auto;
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-wrapper > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  object-position: center;
+}
+
+.img-wrapper > .content {
+  position: absolute;
+  inset: 0;
+  font-size: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, .4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-wrapper > img,
+.img-wrapper > .content {
+  transition: 150ms ease-in-out;
+
+}
+
+.img-wrapper:hover > img.zoom {
+  transform: scale(1.1);
+} */
+
+
+/* SEARCH SHOW SET CARD HOVER */
+.set-card {
+  width: 140px; /* Set your desired width */
+  height: 140px; /* Set your desired height */
+  transition: 150ms ease-in-out; /* Add transition for smooth effect */
+  position: relative; /* Ensure position is relative for z-index */
+}
+
+.set-logo {
+  aspect-ratio: 1/1;
+}
+
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-wrapper > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  object-position: center;
+}
+
+.img-wrapper > .content {
+  position: absolute;
+  inset: 0;
+  font-size: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, .4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.set-card:hover {
+  transform: scale(1.05); /* Zoom in on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add box-shadow on hover */
 }
 
 .card-image {
@@ -62,4 +146,3 @@ App {
   margin-bottom: 0;
   padding:0 
 }
-

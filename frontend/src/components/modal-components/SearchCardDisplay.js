@@ -1,28 +1,49 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, OverlayTrigger, Image } from 'react-bootstrap';
+import React, { useState, Link } from 'react';
+import { Card } from 'react-bootstrap'; // Import necessary components
 
+const SearchCardDisplay = (props, { ele }) => {
+  const [isHover, setIsHover] = useState(false);
 
-const SearchCardDisplay = (props) => {
-// console.log(props)
-return (
-    <Container id="card-pack-details" className="d-flex flex-column p-0 justify-content-center align-items-center">
-        <Row className="justify-content-center p-0 mb-2">
-          <OverlayTrigger
-            placement="bottom"
-            delay={{ show: 100, hide: 100 }}
-            // overlay={props.overlay}
-          >
-          <img
-            className="p-0"
-            id="pkm-card-img"
-            src={props.image}
-            alt="Pokemon Card"
-            style={{ maxHeight: "360px", width: "auto", height: "auto", display: "block", margin: "0 auto" }}
-          />
-          </OverlayTrigger>
-        </Row>
-    </Container>
-  )
-}
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
+  return (
+    <Card
+      className={`set-card d-flex flex-column justify-content-center col-4 col-md-2 shadow border ${isHover ? 'hovered' : ''}`}
+      onClick={() => props.changeDisplayStateCards()} // You may want to pass some props to this function
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {isHover && (
+        <div
+          className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center bg-dark p-5 rounded-3"
+          style={{ opacity: 0.8 }} // Adjust opacity as needed
+        >
+          {ele.name}
+        </div>
+      )}
+      <Link to={`/search/set/${props.id}`}>
+        {/* <div className="d-flex flex-column position-relative"> */}
+          <div className="text-center">
+            <Card.Img
+              variant="top"
+              src={`${props.logo}.png`}
+              className="set-logo"
+              style={{ width: "auto", maxWidth: "100%", maxHeight: "100px" }}
+            />
+          </div>
+          <div className="text-center">
+            <Card.Title className="fs-6">{props.name}</Card.Title>
+          </div>
+        {/* </div> */}
+      </Link>
+    </Card>
+  );
+};
 
 export default SearchCardDisplay;
