@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
 
-const CreateCol = () => {
+const CreateCol = (props) => {
     
     // Inital Form State
     const emptyForm = {
@@ -26,7 +26,9 @@ const CreateCol = () => {
     // handle submitt for this form
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+        props.CreateCollection(form)
+        setForm(emptyForm)
+
     }
  
 
