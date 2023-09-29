@@ -167,6 +167,7 @@ const ShowSearch = (props) => {
                         <CardLg
                             collections = {props.collections}
                             cardData={cardEl}
+                            createPokeCard={props.createPokeCard}
                             key={0}
                         />
                     </Button>
