@@ -1,12 +1,13 @@
 import {useState, useEffect} from "react"
+import { Button, Container, Card, Form } from "react-bootstrap"
 
 const CreateCol = (props) => {
     
     // Inital Form State
     const emptyForm = {
-        colname:"",
-        coldescription:"",
-        colimage:""
+        name:"",
+        description:"",
+        img:""
 
     }
 
@@ -26,7 +27,7 @@ const CreateCol = (props) => {
     // handle submitt for this form
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.CreateCollection(form)
+        props.createCollection(form)
         setForm(emptyForm)
 
     }
@@ -34,23 +35,26 @@ const CreateCol = (props) => {
 
     // Generates the form
     return (
-        <div>
+        <Container>
             <h1>Create Collection</h1>
-            <form>
-                <div>
-                    <label for="enterColName">Collection Name</label>
-                    <input name="colname" value={form.colname} type="text" id="enterColName" placeholder="Enter A Name For This Collection" onChange={(e) => {handleChange(e)}}></input>
-                </div>
-                <div>
-                    <label for="enterColDes">Collection Description</label>
-                    <input name="coldescription" value={form.coldescription} type="text" id="enterColDes" placeholder="Enter A Description For This Collection" onChange={(e) => {handleChange(e)}}></input>
-                </div>
-                <div>
-                    <label for="enterColImage">Collection Description</label>
-                    <input name="colimage" value={form.colimage}type="text" id="enterColImage" placeholder="Paste A Link To An Image To Represent This Collection" onChange={(e) => {handleChange(e)}}></input>
-                </div>
-            </form>
-        </div>
+            <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form.Group>
+                    <Form.Label for="enterColName">Collection Name</Form.Label>
+                    <Form.Control name="name" value={form.name} type="text" id="enterColName" placeholder="Enter A Name For This Collection" onChange={(e) => {handleChange(e)}} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label for="enterColDes">Collection Description</Form.Label>
+                    <Form.Control name="description" value={form.description} type="textarea" rows={3} id="enterColDes" placeholder="Enter A Description For This Collection" onChange={(e) => {handleChange(e)}} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label for="enterColImage">Collection Description</Form.Label>
+                    <Form.Control name="img" value={form.img}type="text" id="enterColImage" placeholder="Paste A Link To An Image To Represent This Collection" onChange={(e) => {handleChange(e)}} />
+                </Form.Group>
+                <Button type="submit">
+                    Create Collection
+                </Button>
+            </Form>
+        </Container>
     )
 }
 export default CreateCol
