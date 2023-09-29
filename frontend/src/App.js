@@ -6,6 +6,7 @@ import Searchpage from "./pages/Searchpage";
 import Sitetitle from "./components/Sitetitle"
 import Collections from "./pages/Collections"
 import CollectionsInfo from "./pages/CollectionInfo";
+import CreateCol from "./pages/CreateCol";
 
 import './styles.css'
 
@@ -66,8 +67,10 @@ function App() {
         <Route path="/" element={<Homepage />}/>
         <Route path="/search" element={<Searchpage />}/>
         <Route path="/search/set/:input" element={<Searchpage />}/>
+        <Route path="/search/set/:input/card/:card" element={<Searchpage />}/>
         <Route path="/collections" element={<Collections  />}/>
         <Route path="/collections/:id" element={<CollectionsInfo  />}/>
+        <Route path="/create" element={<CreateCol/>}/>
       </Routes>
     </div>
   );

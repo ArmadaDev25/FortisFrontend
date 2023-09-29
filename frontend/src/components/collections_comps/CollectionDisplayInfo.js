@@ -4,8 +4,7 @@ import {useState, useEffect} from "react"
 const CollectionDisplayInfo = ({col}) => {
     console.log(col)
     const [toDisplay, setDisplay] = useState(null)
-    const [cards, setCards] = useState(null)
-
+    
     const setData = () => {
         setDisplay(col)
         //setCards(col.cards)
@@ -14,8 +13,7 @@ const CollectionDisplayInfo = ({col}) => {
 
     useEffect(()=>{
         setData()
-        
-    },[])
+    })
     console.log(toDisplay)
     
     const loading = () => {
