@@ -68,7 +68,7 @@ const CreateCol = (props) => {
                 <Form.Group>
                     <Form.Label for="enterColImage">Collection Icon</Form.Label>
                     <Form.Select name="img" id="enterColImage" placeholder="Select Icon" onChange={(e) => handleChange(e)}>
-                        <option>Select Collection</option>
+                        <option>Select Icon</option>
                         {energyArray()}
                     </Form.Select>
                 </Form.Group>
