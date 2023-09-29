@@ -2,12 +2,13 @@
 // Will also display results of searching for a specific card/cards
 
 // Imports
+import { Container, Card } from "react-bootstrap";
 import CardSm from "./CardSm";
 import {useState, useEffect} from 'react' // State import
 import {Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
 import Button from 'react-bootstrap/Button'
-const ShowSearch = () => {
+const ShowSearch = (props) => {
     const params = useParams()
     //console.log(params.input)
     const setsurl = `https://api.tcgdex.net/v2/en/sets/`
@@ -65,16 +66,28 @@ const ShowSearch = () => {
                 if(ele.logo || ele.image){
                     if(!displayState){ //Display sets
                         return( 
-                            <Button onClick={changeDisplayState} className="btn bg-light bg-gradient btn-outline-secondary m-2 shadow ">
-                                <Link to={`/search/set/${ele.id}`}> 
-                                    <CardSm
-                                        image={`${ele.logo}.png`}
-                                        name={ele.name}
-                                        key={index}
+                            <Card
+                            key={index}
+                            className="set-card d-flex flex-column justify-content-center col-4 col-md-2 shadow border "
+                            onClick={() => changeDisplayState()}
+                            >
+                            <Link to={`/search/set/${ele.id}`}>
+                                <div className="d-flex flex-column">
+                                <div className="text-center">
+                                    <Card.Img
+                                    variant="top"
+                                    src={`${ele.logo}.png`}
+                                    className="set-logo"
+                                    style={{width:"auto", maxWidth: '100%', maxHeight: '100px' }}
                                     />
-                                </Link>
-                            </Button>
-                        )
+                                </div>
+                                <div className="text-center">
+                                    <Card.Title className="fs-6">{ele.name}</Card.Title>
+                                </div>
+                                </div>
+                            </Link>
+                            </Card>
+                                                    )
                     } else { //Display Cards
                         return(
                             <button>
@@ -89,9 +102,9 @@ const ShowSearch = () => {
                 }
             })
             return(
-                <div>
+                <Container fluid id="set-array-container" className='d-flex flex-row flex-wrap justify-content-center w-100'>
                     {displaySetArray}
-                </div>
+                </Container>
             )
         }
         // Display Cards Function
@@ -109,9 +122,9 @@ const ShowSearch = () => {
                 )
             })
             return(
-                <div>
+                <Container id="card-array-container"  className='d-flex flex-row flex-wrap justify-content-center w-100'>
                     {displayCardArray}
-                </div>
+                </Container>
             )
         } 
         return displaySets()

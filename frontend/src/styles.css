@@ -6,6 +6,7 @@ App {
   background-color: rgb(236, 108, 108);
 }
 
+
 .abilities {
   background-color: rgb(236, 108, 108);
 }
@@ -19,6 +20,10 @@ App {
   max-width: 11rem;
   max-height: 11rem;
   height: auto;
+}
+
+.set-card {
+  margin: 1px;
 }
 
 .card-image {
@@ -62,4 +67,3 @@ App {
   margin-bottom: 0;
   padding:0 
 }
-
