@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar"
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
 import Homepage from "./pages/Homepage";
 import Searchpage from "./pages/Searchpage";
 import Sitetitle from "./components/Sitetitle"
@@ -101,7 +102,7 @@ function App() {
     }, [])
 
     return (
-        <div className="d-flex flex-column align-items-center container-fluid bg-primary h-100 p-0">
+        <Container fluid className="d-flex flex-column align-items-center bg-light h-100 p-0">
         <Sitetitle />
         <Navbar />
         <Routes>
@@ -113,7 +114,7 @@ function App() {
             <Route path="/collections/:id" element={<CollectionsInfo  />}/>
             <Route path="/create" element={<CreateCol/>}/>
         </Routes>
-        </div>
+        </Container>
     );
 }
 

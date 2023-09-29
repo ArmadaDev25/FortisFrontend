@@ -26,8 +26,8 @@ const CarouselImage = (props) => {
       // console.log(props, 'line 21 - card props @ carouselImage.js');
 
       if (card) {
-        console.log("line 28",card);
-        console.log("line 29:", card.url);
+        // console.log("line 28",card);
+        // console.log("line 29:", card.url);
         if (!card.ok) {
           throw new Error(`HTTP error! Status: ${card.status}`);
         }
@@ -39,7 +39,7 @@ const CarouselImage = (props) => {
         setLoading(false); // Set loading to false once data is fetched
       }
     } catch (error) {
-      console.log( 'line 37 @ carouselimage.js', error);
+      // console.log( 'line 37 @ carouselimage.js', error);
       setError(error);
       setLoading(false); // Set loading to false on error
     }
@@ -66,12 +66,11 @@ const CarouselImage = (props) => {
     return (
       <>
         <Image
-          // cardurl={props.cardurl}
-          className="card-image"
+          className="card-image rounded"
           src={props.image}
           // onClick={() => setModalShow(true)} // call api per card only upon click & setModalShow(true) & access e.event(target)
           // onClick={() => setModalShow(true)}
-          onClick={() => handleImageClick()}
+          // onClick={() => handleImageClick()}
         />
 
         <CardModal 
