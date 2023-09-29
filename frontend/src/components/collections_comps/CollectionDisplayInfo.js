@@ -4,7 +4,7 @@ import CollectionCardModal from "../complete-modals/CollectionCardModal"
 import {useState, useEffect} from "react"
 import { Container,Image } from "react-bootstrap"
 
-const CollectionDisplayInfo = ({col}) => {
+const CollectionDisplayInfo = ({col, deletePokeCard}) => {
     const [toDisplay, setDisplay] = useState(null)
 
     const setData = () => {
@@ -44,7 +44,7 @@ const CollectionDisplayInfo = ({col}) => {
                     </Container>
                         <p className="m-0 fs-6 text-secondary">{toDisplay.description}</p>
                 </Container>
-                <CollectionDisplayCards cards={toDisplay.cards}/>
+                <CollectionDisplayCards deletePokeCard={deletePokeCard} cards={toDisplay.cards}/>
             </Container>
             
         )

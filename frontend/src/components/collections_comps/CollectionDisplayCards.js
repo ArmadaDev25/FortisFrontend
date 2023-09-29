@@ -7,7 +7,7 @@ import EnergyActionDetails from "../modal-components/EnergyActionDetails"
 import CollectionCardModal from "../complete-modals/CollectionCardModal";
 
 
-const CollectionDisplayCards = ({ cards }) =>{
+const CollectionDisplayCards = ({ cards, deletePokeCard }) =>{
     const [showModal, setShowModal] = useState(false);
     const [selectedCard, setSelectedCard] = useState(null);
 
@@ -46,6 +46,7 @@ const CollectionDisplayCards = ({ cards }) =>{
             {displayCardArray}
             <CollectionCardModal 
                 show={showModal}
+                deletePokeCard={deletePokeCard}
                 card={selectedCard}
                 onHide={() => setShowModal(false)}
             />
