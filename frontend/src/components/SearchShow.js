@@ -2,12 +2,11 @@
 // Will also display results of searching for a specific card/cards
 
 // Imports
-import { Container, Card } from "react-bootstrap";
+import {  Button, Card, Container, Row, Col, OverlayTrigger, Image } from "react-bootstrap";
 import CardSm from "./CardSm";
 import {useState, useEffect} from 'react' // State import
 import {Link} from "react-router-dom"
 import { useParams } from "react-router-dom"
-import { Button, Card, Container, Row, Col, OverlayTrigger, Image } from "react-bootstrap";
 import parseAPI from "../middleware/parseAPI";
 import CardModal from "./complete-modals/CardModal";
 import CardLg from "./CardLg";
@@ -15,6 +14,7 @@ import CardDisplay from "./modal-components/CardDisplay";
 import PkmActionDetails from "./modal-components/PkmActionDetails"
 import TrainerActionDetails from "./modal-components/TrainerActionDetails"
 import EnergyActionDetails from "./modal-components/EnergyActionDetails"
+
 const ShowSearch = (props) => {
     const params = useParams()
     console.log(params)
@@ -32,6 +32,7 @@ const ShowSearch = (props) => {
     // useState variables
     const [cardEl, setCardEl] = useState(null)// contains the information pulled from the Pokemon API 
     const [displayState, setDisplay] = useState(0) // Contains information on what is being displayed false means the sets are displayed, true means the cars in the set are displayed
+
     // fetchs the set data
     const someData = {
         stuff: 1
@@ -134,7 +135,7 @@ const ShowSearch = (props) => {
     }, [displayState])
     //console.log('CardEl Value')
     //console.log(cardEl)
-    // Logic that loads when data is avalible
+    // Logic that loads when data is available
     const Loaded = () => {
         //console.log(useState)
         //console.log(displayState)
@@ -142,33 +143,34 @@ const ShowSearch = (props) => {
         //changeDisplayState()
         // Display Sets Function
         //console.log(cardEl)
+        
         const displaySets = () => {
+
             const displaySetArray = cardEl.map((ele, index) => {
                 if(ele.logo || ele.image){
                     if(!displayState){ //Display sets
                         return( 
                             <Card
-                            key={index}
-                            className="set-card d-flex flex-column justify-content-center col-4 col-md-2 shadow border "
-                            onClick={() => changeDisplayState()}
+                                key={index}
+                                className="d-flex flex-column justify-content-center col-4 col-md-2 m-2 set-card "
+                                onClick={() => changeDisplayStateCards()}
                             >
-                            <Link to={`/search/set/${ele.id}`}>
-                                <div className="d-flex flex-column">
-                                <div className="text-center">
-                                    <Card.Img
-                                    variant="top"
-                                    src={`${ele.logo}.png`}
-                                    className="set-logo"
-                                    style={{width:"auto", maxWidth: '100%', maxHeight: '100px' }}
+                                <Link to={`/search/set/${ele.id}`}>
+                                <div className="img-wrapper flex-wrap m-0 p-2">
+                                    <img
+                                        variant="top"
+                                        src={`${ele.logo}.png`}
+                                        className="zoom set-logo"
+                                        style={{ width: "auto", maxWidth: "100%", maxHeight: "100%" }}
                                     />
+                              
                                 </div>
-                                <div className="text-center">
-                                    <Card.Title className="fs-6">{ele.name}</Card.Title>
+                                </Link>
+                                <div className="text-center h-25 p-1 mb-2">
+                                    {ele.name}
                                 </div>
-                                </div>
-                            </Link>
                             </Card>
-                                                    )
+                        )
                     } else { //Display Cards
                         return(
                             <button>
