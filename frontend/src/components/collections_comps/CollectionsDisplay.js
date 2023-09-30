@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-import { Button } from "react-bootstrap"
+import { Button, Container } from "react-bootstrap"
 import {Link} from "react-router-dom"
 
 const CollectionsDisplay = (props) => {
@@ -29,22 +29,26 @@ const CollectionsDisplay = (props) => {
        
         const displayCollections = props.collections.map((ele, index) => {
             return(
-                <>
-                    <Link to={`/collections/${ele._id}`}>
-                        <h2>{ele.name}</h2>
-                        <p>{ele.cards.length} cards in collection</p>
+                <div className="collection-link-container d-flex flex-column align-items-center border rounded text-center p-2 m-1">
+                    <Link className="m-auto" to={`/collections/${ele._id}`}>
+                        <Container fluid>
+                                <h5 className="">{ele.name}</h5>
+                                <p>{ele.cards.length} cards in collection</p>
+                        </Container>
                     </Link>
-                    <Button variant="danger" value={ele._id} onClick={(e)=>handleDeletion(e)}>
+                    <Button className="bg-none mt-auto" variant="danger" value={ele._id} onClick={(e)=>handleDeletion(e)}>
+                        <p className="fs-6 m-0">
                         Delete Collection
+                        </p>
                     </Button>
-                </>
+                </div>
                 
             )
         })
         return (
-            <div>
+            <Container className="d-flex flex-row justify-content-center flex-wrap">
                 {displayCollections}
-            </div>
+            </Container>
         )
 
     }
