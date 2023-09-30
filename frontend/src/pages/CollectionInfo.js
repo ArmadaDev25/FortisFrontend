@@ -27,7 +27,7 @@ const CollectionInfo = (props) => {
     
     return(
         <>
-            <CollectionDisplayInfo deletePokeCard={props.deletePokeCard} col={collection}/>
+            <CollectionDisplayInfo deletePokeCard={props.deletePokeCard} deleteCollection={props.deleteCollection} col={collection}/>
             
 
         </>

@@ -2,10 +2,13 @@
 import CollectionDisplayCards from "./CollectionDisplayCards"
 import CollectionCardModal from "../complete-modals/CollectionCardModal"
 import {useState, useEffect} from "react"
-import { Container,Image } from "react-bootstrap"
+import { Button, Container,Image } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
-const CollectionDisplayInfo = ({col, deletePokeCard}) => {
+const CollectionDisplayInfo = ({col, deletePokeCard, deleteCollection}) => {
     const [toDisplay, setDisplay] = useState(null)
+
+    const navigate = useNavigate()
 
     const setData = () => {
         setDisplay(col)
@@ -17,6 +20,18 @@ const CollectionDisplayInfo = ({col, deletePokeCard}) => {
         setData()
     })
     console.log('toDisplay line at CDI: ', toDisplay)
+
+    const handleDeletion = (e) => {
+        e.preventDefault()
+        //console.log(e.target.value)
+        deleteCollection(e.target.value)
+        navigate('/collections')
+    }
+
+    const handleEdit = (e) => {
+        e.preventDefault()
+        navigate(`/collections/${col._id}/edit`)
+    }
     
     const loading = () => {
         return(
@@ -43,6 +58,14 @@ const CollectionDisplayInfo = ({col, deletePokeCard}) => {
                         />
                     </Container>
                         <p className="m-0 fs-6 text-secondary">{toDisplay.description}</p>
+                    <Container>
+                        <Button className="bg-none mt-auto" onClick={(e)=>handleEdit(e)}>
+                            Edit Collection Data
+                        </Button>
+                        <Button className="bg-none mt-auto" variant="danger" value={col._id} onClick={(e)=>handleDeletion(e)}>
+                            Delete Collection
+                        </Button>
+                    </Container>
                 </Container>
                 <CollectionDisplayCards deletePokeCard={deletePokeCard} cards={toDisplay.cards}/>
             </Container>
