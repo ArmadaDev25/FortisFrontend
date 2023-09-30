@@ -1,10 +1,22 @@
 import { Image, Row, Modal, ModalHeader, Container, Col } from "react-bootstrap"
 import { useState } from "react";
+import CardDisplay from "../modal-components/CardDisplay";
+import PkmActionDetails from "../modal-components/PkmActionDetails"
+import TrainerActionDetails from "../modal-components/TrainerActionDetails"
+import EnergyActionDetails from "../modal-components/EnergyActionDetails"
+import CollectionCardModal from "../complete-modals/CollectionCardModal";
 
 
-const CollectionDisplayCards = ({ cards , onClick }) =>{
+const CollectionDisplayCards = ({ cards }) =>{
+    const [showModal, setShowModal] = useState(false);
+    const [selectedCard, setSelectedCard] = useState(null);
+
+    const handleCardClick = async (index) => {
+        setSelectedCard(cards[index]);
+        setShowModal(true);
+    };
+
     
-
     const displayCardArray = cards.map((ele, index) => {
         return(
         <Col
@@ -12,6 +24,8 @@ const CollectionDisplayCards = ({ cards , onClick }) =>{
             id="collection-card-wrapper" 
             className="d-flex flex-column m-2 justify-content-center align-items-center text-center"
             xs={3} lg={2}
+            onClick={() => handleCardClick(index)}
+            
         >
             <Image
                 className="p-0 object-fit-contain rounded"
@@ -22,7 +36,7 @@ const CollectionDisplayCards = ({ cards , onClick }) =>{
             />
             <div className="d-none d-sm-block" style={{fontSize:".9rem"}}>
                 {ele.name}
-            </div>  
+            </div> 
 
         </Col>
         )
@@ -30,6 +44,11 @@ const CollectionDisplayCards = ({ cards , onClick }) =>{
     return (
         <Container className="d-flex flex-row justify-content-center align-items-start border rounded flex-wrap p-2">
             {displayCardArray}
+            <CollectionCardModal 
+                show={showModal}
+                card={selectedCard}
+                onHide={() => setShowModal(false)}
+            />
         </Container>
     )
 
