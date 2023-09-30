@@ -26,6 +26,15 @@ Backend: https://github.com/ArmadaDev25/FortisBackend
 
 ## Screenshots
 
+### The Homepage
+<img width="980" alt="rm1" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/cae3d162-f956-447d-89b9-b01ddbee5667">
+
+
+### Card Database 
+<img width="1007" alt="rm2" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/e3ffb893-f6fe-4b71-a245-87b7c634fe3c">
+
+
+
 ## Languages Used
 - CSS
 - React
