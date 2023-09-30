@@ -8,6 +8,7 @@ import Sitetitle from "./components/Sitetitle"
 import Collections from "./pages/Collections"
 import CollectionsInfo from "./pages/CollectionInfo";
 import CreateCol from "./pages/CreateCol";
+import EditCol from "./pages/EditCol"
 
 import './styles.css'
 
@@ -113,6 +114,7 @@ function App() {
             <Route path="/collections" element={<Collections collections={collections} deleteCollection={deleteCollection}/>}/>
             <Route path="/collections/:id" element={<CollectionsInfo deletePokeCard={deletePokeCard}  />}/>
             <Route path="/create" element={<CreateCol collection={collections} createCollection={createCollection}/>}/>
+            <Route path="/collections/:id/edit" element={<EditCol updateCollection={updateCollection}/>}></Route>
         </Routes>
         </Container>
     );
