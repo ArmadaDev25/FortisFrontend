@@ -1,7 +1,7 @@
 # Fortis
 
 ## Live Link
-
+https://main--mellow-cheesecake-394e88.netlify.app
 
 ## Overview
 Fortis is a React App consisting of both a frontend and a backend. This app allows users to browse various Pokemon sets and the cards contained within them. Clicking on a card will allow users to see various stats and information about the card that they click on. Users are able to create a new collection, view collections created by other site users, or delete a collection. They are able to update collections by adding or removing cards. User generated collections are stored on backend that connects to a Mongo Database that stores the data for the user generated collections.  
