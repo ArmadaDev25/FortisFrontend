@@ -24,35 +24,37 @@ const CardCarousel = () => {
   const [imagesLoadedCount, setImagesLoadedCount] = useState(0)
   
   const findSet = async () => {
-    const allSetsArray = await fetch("https://api.tcgdex.net/v2/en/sets");
-    const allSetsData = await allSetsArray.json();
-    let foundSetArray = [];
-    let randomSetId = '';
-    
-    for (let i = 0; i < allSetsData.length; i++) {
-      const set = allSetsData[i];
-      if(set.cardCount.total > 36 && !set.name.includes('Promos')) {
-        foundSetArray.push(set)
-      }
-    }
-    console.log(foundSetArray);
-  
-    let randomSetIndex = Math.floor(Math.random()*foundSetArray.length)
-    randomSetId = foundSetArray[randomSetIndex].id
-  
     try {
-      const randomSetData = await fetch(`https://api.tcgdex.net/v2/en/sets/${randomSetId}`)
+      const allSetsArray = await fetch("https://api.tcgdex.net/v2/en/sets");
+      if (!allSetsArray.ok) {
+        throw new Error(`HTTP error! Status: ${allSetsArray.status}`);
+      }
+      const allSetsData = await allSetsArray.json();
+  
+      // Filter sets based on your criteria
+      const filteredSets = allSetsData.filter((set) => {
+        return set.cardCount.total > 36 && !set.name.includes('Promos');
+      });
+  
+      // Create an array of set IDs
+      const setIds = filteredSets.map((set) => set.id);
+  
+      // Select a random set ID from the array
+      const randomSetId = setIds[Math.floor(Math.random() * setIds.length)];
+  
+      // Fetch data for the selected random set
+      const randomSetData = await fetch(`https://api.tcgdex.net/v2/en/sets/${randomSetId}`);
       if (!randomSetData.ok) {
         throw new Error(`HTTP error! Status: ${randomSetData.status}`);
       }
-      const renderedRandomData = await randomSetData.json()
-      console.log(renderedRandomData);
+  
+      // Parse and set the random set data
+      const renderedRandomData = await randomSetData.json();
       setSetData(shortenSet(renderedRandomData));
-    }catch (error) {
+    } catch (error) {
       setError(error);
     }
-    
-  }
+  };
 
  
   useEffect(() => {
