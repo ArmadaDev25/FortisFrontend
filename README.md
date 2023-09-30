@@ -7,7 +7,7 @@ Backend: https://github.com/ArmadaDev25/FortisBackend
 
 
 ## Contributers
-John K
-Jackson Oberman
+John K <br>
+Jackson Oberman <br>
 Chau Quach
 
