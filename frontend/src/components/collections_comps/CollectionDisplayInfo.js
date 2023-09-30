@@ -52,14 +52,5 @@ const CollectionDisplayInfo = ({col}) => {
     }
     return toDisplay ? loaded() : loading()
 
-
-  
-
-
-
-    
-
-   
-
 }
 export default CollectionDisplayInfo
