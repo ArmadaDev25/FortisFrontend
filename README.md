@@ -67,4 +67,8 @@ Chau Quach <br>
 ### Backend/Frontend Developers
 Jackson Oberman <br>
 
+## Project Brainstorming
+We used Trello in order to collect and organize all of our ideas for the project. <br>
+Link: https://trello.com/b/ERp1tlWU/project-3-board
+
 
