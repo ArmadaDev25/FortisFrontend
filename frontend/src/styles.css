@@ -19,6 +19,15 @@ App {
   background-color: rgb(236, 108, 108);
 }
 
+.collection-link-container {
+  width: 250px;
+  height: auto;
+  font-size: .6rem;
+}
+.btn > p{
+  font-size: .6rem;
+}
+
 
 /* SEARCH SHOW LOGO HOVER EFFECT ONLY */
 /* .set-card {
