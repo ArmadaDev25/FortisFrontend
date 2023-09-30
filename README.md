@@ -18,9 +18,11 @@ Backend: https://github.com/ArmadaDev25/FortisBackend
 - 3rd Party Apis
 
 ## Contributers
+
 ### Frontend Developers
 John K <br>
 Chau Quach <br>
+
 ### Backend/Frontend Developers
 Jackson Oberman <br>
 
