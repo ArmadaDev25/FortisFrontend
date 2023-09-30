@@ -1,13 +1,18 @@
-import { Image, Row, Modal, ModalHeader, Container, Col } from "react-bootstrap"
+import { Image, Row, Modal, ModalHeader, Container, Col, Button } from "react-bootstrap"
 import { useState } from "react";
 import CardDisplay from "../modal-components/CardDisplay";
 import PkmActionDetails from "../modal-components/PkmActionDetails"
 import TrainerActionDetails from "../modal-components/TrainerActionDetails"
 import EnergyActionDetails from "../modal-components/EnergyActionDetails"
+import { useParams, useNavigate } from "react-router-dom";
 
-function CollectionCardModal ({card, show, onHide}) {
+function CollectionCardModal ({card, show, onHide, deletePokeCard}) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const params = useParams()
+  const navigate = useNavigate()
+
   const cardType = () => {
 
     if (card.category === "Pokemon") {
@@ -44,6 +49,11 @@ function CollectionCardModal ({card, show, onHide}) {
     }
   }
 
+  const handleDeletion = (e) => {
+    e.preventDefault()
+    deletePokeCard(params.id, e.target.value)
+    navigate(`/collections/`)
+  }
 
   // Render the loaded data
   const loaded = (props) => {
@@ -70,7 +80,12 @@ function CollectionCardModal ({card, show, onHide}) {
             />
   
             {/* Gets Card Category then Returns Appropriate Component  */}
-            {cardType()}
+            <Container>
+              {cardType()}
+              <Button variant="danger" value={card._id} onClick={(e)=>handleDeletion(e)} >
+                Remove Card
+              </Button>
+            </Container>
   
           </Modal.Body>
         </Modal>

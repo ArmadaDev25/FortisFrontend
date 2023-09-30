@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap"
 import {useParams} from "react-router-dom"
 import {useState, useEffect} from "react"
 
-const CollectionInfo = () => {
+const CollectionInfo = (props) => {
     
     const params = useParams()
     const [collection, setCollection] = useState(null)
@@ -27,7 +27,7 @@ const CollectionInfo = () => {
     
     return(
         <>
-            <CollectionDisplayInfo col={collection}/>
+            <CollectionDisplayInfo deletePokeCard={props.deletePokeCard} col={collection}/>
             
 
         </>
