@@ -5,14 +5,7 @@ import {useState, useEffect} from "react"
 import { Container } from "react-bootstrap"
 
 const CollectionDisplayInfo = ({col}) => {
-    // const [showModal, setShowModal] = useState(false);
-    // const [selectedCard, setSelectedCard] = useState(null);
     const [toDisplay, setDisplay] = useState(null)
-
-    // const handleCardClick = (ele) => {
-    //     setSelectedCard(ele);
-    //     setShowModal(true);
-    //   };
 
     const setData = () => {
         setDisplay(col)
@@ -39,12 +32,6 @@ const CollectionDisplayInfo = ({col}) => {
                 <p className="m-0 fs-6 text-secondary">{toDisplay.description}</p>
             </Container>
             <CollectionDisplayCards cards={toDisplay.cards}/>
-                {/* {showModal && (
-                    <CollectionCardModal
-                        card={selectedCard} 
-                        onHide={() => setShowModal(false)}
-                     />
-                )} */}
             </Container>
             
         )
