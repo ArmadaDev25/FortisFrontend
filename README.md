@@ -33,6 +33,19 @@ Backend: https://github.com/ArmadaDev25/FortisBackend
 ### Card Database 
 <img width="1007" alt="rm2" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/e3ffb893-f6fe-4b71-a245-87b7c634fe3c">
 
+### Create Collection
+<img width="981" alt="rm3" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/b60b8065-0f52-483f-b09c-62179eb49b5f">
+
+### Card Collections
+<img width="966" alt="rm4" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/5bf68c7a-a88f-4d76-a8e6-d103f2c52b09">
+
+### Card Collection Info
+<img width="981" alt="rm5" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/9d9afcb6-3c84-4b21-8255-ee0060520406">
+
+
+
+
+
 
 
 ## Languages Used
