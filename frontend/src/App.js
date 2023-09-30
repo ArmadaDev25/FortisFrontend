@@ -16,8 +16,8 @@ function App() {
     const [collections, setCollections] = useState(null)
     const [pokeCards, setPokeCards] = useState(null)
 
-    //const collectionURL = "https://fortis-backend-c8c49038070a.herokuapp.com/collections/"
-    const collectionURL = "http://localhost:4000/collections/"
+    const collectionURL = "https://fortis-backend-c8c49038070a.herokuapp.com/collections/"
+    // const collectionURL = "http://localhost:4000/collections/"
 
     //Collection crud
     const getCollections = async () => {
