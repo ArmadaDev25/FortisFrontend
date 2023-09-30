@@ -114,7 +114,7 @@ function App() {
             <Route path="/collections" element={<Collections collections={collections} deleteCollection={deleteCollection}/>}/>
             <Route path="/collections/:id" element={<CollectionsInfo deletePokeCard={deletePokeCard}  />}/>
             <Route path="/create" element={<CreateCol collection={collections} createCollection={createCollection}/>}/>
-            <Route path="/collections/:id/edit" element={<EditCol updateCollection={updateCollection}/>}></Route>
+            <Route path="/collections/:id/edit" element={<EditCol collections={collections} updateCollection={updateCollection}/>}></Route>
         </Routes>
         </Container>
     );
