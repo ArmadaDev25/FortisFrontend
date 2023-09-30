@@ -1,4 +1,5 @@
 import CollectionsDisplay from "../components/collections_comps/CollectionsDisplay"
+import { Container } from "react-bootstrap"
 const Collections = (props) => {
     return (
         <>

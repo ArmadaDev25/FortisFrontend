@@ -1,6 +1,6 @@
 // Shows info and cards on the selected collection
 import CollectionDisplayInfo from "../components/collections_comps/CollectionDisplayInfo"
-
+import { Container } from "react-bootstrap"
 import {useParams} from "react-router-dom"
 import {useState, useEffect} from "react"
 
@@ -26,11 +26,11 @@ const CollectionInfo = () => {
     
     
     return(
-        <h1>
+        <>
             <CollectionDisplayInfo col={collection}/>
             
 
-        </h1>
+        </>
         
     )
 

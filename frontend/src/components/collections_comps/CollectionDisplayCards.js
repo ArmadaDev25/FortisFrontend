@@ -42,7 +42,7 @@ const CollectionDisplayCards = ({ cards }) =>{
         )
     })
     return (
-        <Container className="d-flex flex-row justify-content-center align-items-start border rounded flex-wrap p-2">
+        <Container id="collection-cards-container" className="d-flex flex-row justify-content-center align-items-start border rounded flex-wrap p-0 vh-50 overflow-y-scroll">
             {displayCardArray}
             <CollectionCardModal 
                 show={showModal}

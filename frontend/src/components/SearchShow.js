@@ -145,7 +145,7 @@ const ShowSearch = (props) => {
                     }
                 })
                 return(
-                    <Container fluid id="set-array-container" className='d-flex flex-row flex-wrap justify-content-center w-100'>
+                    <Container fluid id="set-array-container" className='d-flex flex-row flex-wrap justify-content-center overflow-y-scroll'>
                         {displaySetArray}
                     </Container>
                 )
