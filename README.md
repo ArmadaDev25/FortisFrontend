@@ -42,6 +42,10 @@ Backend: https://github.com/ArmadaDev25/FortisBackend
 ### Card Collection Info
 <img width="981" alt="rm5" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/9d9afcb6-3c84-4b21-8255-ee0060520406">
 
+### Collection Edit 
+<img width="984" alt="rm6" src="https://github.com/ArmadaDev25/FortisFrontend/assets/119649188/4230fd06-1e82-41b1-96c8-0af54dfd2549">
+
+
 
 
 
